@@ -4,13 +4,13 @@ import {
   Box,
   Typography,
   CardActionArea,
-  Skeleton,
+  // Skeleton,
 } from '@mui/material';
 import Link from 'next/link';
 import CarouselItem from 'components/carousel.item';
 import _ from 'lodash';
 import { styled } from '@mui/material/styles';
-import CarouselSmall from 'components/carousel.small';
+// import CarouselSmall from 'components/carousel.small';
 import { Menu as MenuType } from 'components/header';
 import { fontSize, borderRadius, hijauRamadhan } from 'styles/theme';
 import { BreakpointsContext } from 'contexts/breakpoints';
