@@ -103,7 +103,7 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
 
             <Grid item xs={10}>
               <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0,0,0,0)`, border: `1px solid ${hijauRamadhan}`, padding:`2rem` }}>
-                <Grid container spacing={1}>
+                <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <img src="/images/icon/accent/accentIco1.svg" alt="" />
                     <img src="/images/icon/accent/accentIco2.svg" alt="" />
