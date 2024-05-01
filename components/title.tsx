@@ -16,6 +16,7 @@ import useTextToSpeech from 'hooks/useTextToSpeech';
 
 interface Props {
   text: string;
+  iconJudul?: string;
   buttonText?: string;
   paddingY?: number;
   paddingX?: number;
@@ -58,6 +59,7 @@ export const ButtonStyled = styled(Button)(({ theme }) => ({
 
 const Title: React.FunctionComponent<Props> = ({
   text,
+  iconJudul,
   buttonText,
   paddingY,
   paddingX,
@@ -93,6 +95,7 @@ const Title: React.FunctionComponent<Props> = ({
             onClick={onBack}
           />
         }
+        <img src={iconJudul} style={{marginRight:'0.7rem', maxHeight:'25px'}}/>
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}
           sx={{

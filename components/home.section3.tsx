@@ -4,12 +4,11 @@ import {
   Box,
   Skeleton,
 } from '@mui/material';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { styled } from '@mui/material/styles';
 import Title from 'components/title';
 import NewsContainer from 'components/news.container';
 // import NewsContainer2 from 'components/news.container2';
-import Element3 from 'public/images/icon/element_3.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 
 interface Category {
@@ -74,19 +73,15 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 }));
 
 const HomeSection3: React.FunctionComponent<Props> = ({ data }: Props) => {
-  // const router = useRouter();
+  const router = useRouter();
   const loading = false;
   const { downSm } = React.useContext(BreakpointsContext);
-  // const handleOnClick = React.useCallback(() => router.push('/id/berita', '/id/berita'), []);
+  const handleOnClick = React.useCallback(() => router.push('/id/berita', '/id/berita'), []);
   return (
     <>
       {data &&
         <BoxStyled>
-          <Box className="wrapper-svg-section3">
-            <Element3 />
-          </Box>
-          {/* <Title text="Berita" buttonText="lihat semua" onClick={handleOnClick} /> */}
-          <Title text="Berita" />
+          <Title text="Berita Terbaru" buttonText="lihat semua" onClick={handleOnClick} iconJudul='/images/icon/accent/accentIco1.svg'/>
           <Grid container spacing={downSm ? 0 : 4} alignItems="stretch">
             <Grid item xs={12} sm={8}>
               {loading ? (

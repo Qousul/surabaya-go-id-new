@@ -2,13 +2,13 @@ import React, { memo } from 'react';
 import {
   Box,
 } from '@mui/material';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { styled } from '@mui/material/styles';
 import { NewsType } from 'components/home.section3';
-import NewsItem from 'components/news.item';
-import Title from 'components/title';
-import CarouselContent from 'components/carousel.content';
-import { fontSize } from 'styles/theme';
+// import NewsItem from 'components/news.item';
+// import Title from 'components/title';
+import CarouselContentLP from './carousel.contentLP';
+// import { fontSize } from 'styles/theme';
 import { BreakpointsContext } from 'contexts/breakpoints';
 
 interface Props {
@@ -27,14 +27,21 @@ export const BoxStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const BoxStyled2 = styled(Box)(({ theme }) => ({
+  borderRadius: theme.spacing(2),
+  height: '100%',
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(0, 0, 3),
+  },
+}));
+
 const NewsContainer: React.FunctionComponent<Props> = ({ data }: Props) => {
-  const router = useRouter();
+  // const router = useRouter();
   const { downSm } = React.useContext(BreakpointsContext);
-  const handleOnClick = React.useCallback(() => router.push('/id/berita', '/id/berita'), []);
+  // const handleOnClick = React.useCallback(() => router.push('/id/berita', '/id/berita'), []);
   return (
-    <BoxStyled sx={{ backgroundColor: downSm ? 'transparent' : 'grey.A100' }}>
-      {!downSm && <Title text="Terbaru" paddingY={0} buttonText="lihat semua" onClick={handleOnClick} />}
-      {data.length > 0 &&
+    <BoxStyled2 sx={{ backgroundColor: `rgba(0,0,0,0)` }}>
+      {/* {data.length > 0 &&
         <Box marginTop={2}>
           <NewsItem
             data={data[0]}
@@ -45,11 +52,11 @@ const NewsContainer: React.FunctionComponent<Props> = ({ data }: Props) => {
             route="berita"
           />
         </Box>
-      }
-      <Box marginTop={downSm ? 3 : 2}>
-        <CarouselContent data={data.slice(1)} slidesToShow={downSm ? 1 : 3} withDescription={false} route="berita" />
+      } */}
+      <Box marginTop={downSm ? 3 : 0}>
+        <CarouselContentLP data={data.slice(1)} slidesToShow={1} withDescription={false} route="berita" />
       </Box>
-    </BoxStyled>
+    </BoxStyled2>
   );
 };
 

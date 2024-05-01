@@ -137,14 +137,14 @@ const Home: NextPage<Props> = ({
         <HomeSection2 />
       </Layout>
       <BoxStyled1>
-        <Layout paddingY={0}>
+        <Layout>
           <>
-            <Box className="wrapper-svg1">
+            {/* <Box className="wrapper-svg1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg2">
               <Element4 />
-            </Box>
+            </Box> */}
             <HomeSection3 data={news} />
           </>
         </Layout>
@@ -162,12 +162,12 @@ const Home: NextPage<Props> = ({
         <Box className="box-inner">
           <Layout paddingY={0}>
             <>
-              <Box className="wrapper-svg4">
+              {/* <Box className="wrapper-svg4">
                 <Element2 />
               </Box>
               <Box className="wrapper-svg5">
                 <Element4 />
-              </Box>
+              </Box> */}
               <HomeSection5 data={services} />
             </>
           </Layout>
