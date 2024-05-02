@@ -4,10 +4,12 @@ import {
   Skeleton,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import CarouselContent from 'components/carousel.content';
+// import CarouselContent from 'components/carousel.content';
 import Title from 'components/title';
 import { NewsType } from 'components/home.section3';
 import { BreakpointsContext } from 'contexts/breakpoints';
+import CarouselContentLP2 from './carousel.contentLP2';
+import { hijauRamadhan } from 'styles/theme';
 
 interface Props {
   data: NewsType[];
@@ -16,10 +18,10 @@ interface Props {
 const BoxStyled = styled(Box)(({ theme }) => ({
   position: 'relative',
   zIndex: 1,
-  backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+  // backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
   borderRadius: theme.spacing(2),
-  padding: theme.spacing(8, 3),
-  margin: theme.spacing(5, 3),
+  // padding: theme.spacing(8, 3),
+  marginBottom: theme.spacing(12),
   '& .MuiGrid-container': {
     position: 'relative',
     zIndex: 1,
@@ -34,7 +36,8 @@ const BoxStyled = styled(Box)(({ theme }) => ({
     },
   },
   '& a': {
-    color: `${theme.palette.common.white} !important`,
+    // color: `${theme.palette.common.white} !important`,
+    color: `${hijauRamadhan} !important`,
   },
   [theme.breakpoints.down('sm')]: {
     margin: theme.spacing(5, 0),
@@ -53,27 +56,9 @@ const HomeSection4: React.FunctionComponent<Props> = ({ data }: Props) => {
   const { downSm } = React.useContext(BreakpointsContext);
   const loading = false;
   return (
+    <>
+    <Title text="Agenda Terbaru" iconJudul='/images/icon/accent/accentIco1.svg'/>
     <BoxStyled>
-      <Box
-        display="flex"
-        position="absolute"
-        top={0}
-        left="50%"
-        sx={{
-          transform: 'translate(-50%, -50%)',
-          '& .MuiTypography-root': {
-            whiteSpace: 'nowrap',
-          },
-        }}
-      >
-        <Title
-          text="Agenda Kota"
-          paddingY={2}
-          paddingX={2}
-          withBackground={true}
-          justifyContent="center"
-        />
-      </Box>
       {loading ? (
         <Skeleton
           variant="rectangular"
@@ -85,11 +70,11 @@ const HomeSection4: React.FunctionComponent<Props> = ({ data }: Props) => {
           }}
         />
       ) : (
-        <CarouselContent
+        <CarouselContentLP2
           data={data}
           gridContent={6}
           gridImage={6}
-          slidesToShow={downSm ? 1 : 2}
+          slidesToShow={downSm ? 1 : 3}
           gridSpacing={2}
           route="agenda"
           withDescription={false}
@@ -97,6 +82,7 @@ const HomeSection4: React.FunctionComponent<Props> = ({ data }: Props) => {
         />
       )}
     </BoxStyled>
+    </>
   );
 };
 

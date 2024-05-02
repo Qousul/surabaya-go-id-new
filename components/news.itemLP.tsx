@@ -71,6 +71,10 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 const Typography1Styled = styled(Typography)(() => ({
   fontWeight: 800,
   textTransform: 'uppercase',
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
 }));
 
 const NewsItem: React.FunctionComponent<Props> = ({
@@ -118,12 +122,6 @@ const NewsItem: React.FunctionComponent<Props> = ({
                   marginBottom={marginTop}
                   className="title"
                   onMouseEnter={() => textToSpeech(data.title, false)}
-                  sx={{
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                  }}
                 >
                   {data.title}
                 </Typography1Styled>
