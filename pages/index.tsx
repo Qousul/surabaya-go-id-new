@@ -81,7 +81,8 @@ const BoxStyled1 = styled(Box)(({ theme }) => ({
   '& .box-inner': {
     position: 'relative',
     zIndex: 0,
-    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+    // backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : `white`,
     '& .wrapper-svg4, & .wrapper-svg5': {
       position: 'absolute',
       zIndex: 0,
@@ -152,10 +153,6 @@ const Home: NextPage<Props> = ({
           <Layout>
             <>
               <HomeSection4 data={agenda} />
-              <Title
-                text="Pelayanan Pemerintah Kota Surabaya"
-                paddingY={0}
-              />
             </>
           </Layout>
         </Box>
@@ -168,7 +165,7 @@ const Home: NextPage<Props> = ({
               <Box className="wrapper-svg5">
                 <Element4 />
               </Box> */}
-              <HomeSection5 data={services} />
+              <HomeSection5 data={services}/>
             </>
           </Layout>
         </Box>
