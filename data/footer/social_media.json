@@ -7,7 +7,7 @@
     {
         "title": "Twitter",
         "link": "https://twitter.com/sapawargasby",
-        "img": "twitter.svg"
+        "img": "xtwitter.svg"
     },
     {
         "title": "Instagram",
@@ -18,5 +18,10 @@
         "title": "Youtube",
         "link": "https://www.youtube.com/user/MediaCenterPemkotSby",
         "img": "youtube.svg"
+    },
+    {
+        "title": "Tiktok",
+        "link": "https://www.tiktok.com/@sapawargasby",
+        "img": "tiktok.svg"
     }
 ]
