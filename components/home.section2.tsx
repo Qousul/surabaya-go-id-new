@@ -15,6 +15,7 @@ import { Menu as MenuType } from 'components/header';
 import { fontSize, borderRadius, hijauRamadhan } from 'styles/theme';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { MenuContext } from 'contexts/menu';
+import Title from 'components/title';
 import useTextToSpeech from 'hooks/useTextToSpeech';
 
 interface Props { };
@@ -48,6 +49,15 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
+const BoxStyled2 = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: '50px',
+  '& .MuiTypography-root': {
+    color: theme.palette.common.white,
+    lineHeight: 1.2,
+  },
+}));
+
 function findMenu(array: MenuType[], title: string) {
   let object = null;
   array.some(function f(a: MenuType) {
@@ -64,7 +74,7 @@ function findMenu(array: MenuType[], title: string) {
 };
 
 const HomeSection2: React.FunctionComponent<Props> = () => {
-  const { downSm } = React.useContext(BreakpointsContext);
+  const { downSm, downMd } = React.useContext(BreakpointsContext);
   const { loading, menu } = React.useContext(MenuContext);
   const { textToSpeech } = useTextToSpeech();
   const whatsInSurabaya: MenuType[] = React.useMemo(() => {
@@ -78,104 +88,60 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
   console.log('whatsInSurabaya', whatsInSurabaya);
 
   return (
-    <Box sx={{ padding: `5rem 0`}}>
+    <Box sx={{ padding: `5rem 0` }}>
       <Grid container spacing={2} alignItems="stretch" overflow={downSm ? 'hidden' : 'visible'}>
 
-        <Grid item xs={4}>
-          <BoxStyled height={downSm ? 'auto' : '100%'} sx={{
+
+        <Grid item md={4} xs={12}>
+          <BoxStyled height={downMd ? '10rem' : '100%'} sx={{
             backgroundImage: `url("/images/photos/balaiKotaMalam.png")`,
-            backgroundSize: `auto 100%`,
+            backgroundSize: downMd? `cover`:`auto 100%`,
             backgroundPosition: `center center`
           }}>
           </BoxStyled>
         </Grid>
 
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Grid container spacing={2}>
-
-            <Grid item xs={2}>
-              <BoxStyled height={downSm ? 'auto' : '100%'} sx={{borderRadius: '100px', padding:`2rem 0`}}>
-                <Typography onMouseEnter={(e) => textToSpeech(e, true)} sx={{ textOrientation: 'sideways', writingMode: 'vertical-lr', textTransform: 'uppercase' }}>
-                  <b>Tentang Surabaya</b>
-                </Typography>
-              </BoxStyled>
+            <Grid item xs={12}>
+              <Grid container spacing={0} sx={{ backgroundColor: `white`, border: `1px solid ${hijauRamadhan}`, padding: `1rem 2rem 2rem`, borderRadius: `50px` }}>
+                <Grid item xs={12}>
+                  <Title text="Tentang Surabaya" iconJudul='/images/icon/accent/accentIco2.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography onMouseEnter={(e) => textToSpeech(e, true)} style={{ color: hijauRamadhan, fontSize: `16px` }}>
+                    Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian dari Provinsi Jawa Timur. Kota ini terbagi menjadi 31 kecamatan dan 154 kelurahan. Kota ini, yang dikenal dengan nilai kepahlawanan, memiliki sejarah panjang yang terkait dengan peristiwa heroik seperti peristiwa pertempuran 10 November 1945. Sebagai pelabuhan penting sejak zaman Majapahit hingga masa kolonial Belanda, Surabaya terus memainkan peran vital dalam perdagangan dan sejarah Indonesia.
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
 
-            <Grid item xs={10}>
-              <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0,0,0,0)`, border: `1px solid ${hijauRamadhan}`, padding:`2rem` }}>
-                <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <BoxStyled2>
+                <Grid container spacing={0} sx={{ border: `1px solid ${hijauRamadhan}`, padding: `1rem 2rem 2rem`, borderRadius: `50px` }}>
                   <Grid item xs={12}>
-                    <img src="/images/icon/accent/accentIco1.svg" alt="" />
-                    <img src="/images/icon/accent/accentIco2.svg" alt="" />
+                    <Title text="Ada Apa di Surabaya" iconJudul='/images/icon/accent/accentIco1.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography onMouseEnter={(e) => textToSpeech(e, true)} style={{ color: hijauRamadhan, fontSize: `16px`}}>
-                      Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian dari Provinsi Jawa Timur. Kota ini terbagi menjadi 31 kecamatan dan 154 kelurahan. Kota ini, yang dikenal dengan nilai kepahlawanan, memiliki sejarah panjang yang terkait dengan peristiwa heroik seperti peristiwa pertempuran 10 November 1945. Sebagai pelabuhan penting sejak zaman Majapahit hingga masa kolonial Belanda, Surabaya terus memainkan peran vital dalam perdagangan dan sejarah Indonesia.
-                    </Typography>
+                    <BoxStyled height={downSm ? 'auto' : '100%'}>
+                      {whatsInSurabaya.map((v, i) => (
+                        <Link key={i} href={v.url ? v.url : '#'} passHref>
+                          {/* <Link key={i} href={`/id/page/0/${v.id}/${_.kebabCase(v.title)}`} passHref> */}
+                          <CardActionArea component="a" target='_blank' sx={{ borderRadius: 4 }}>
+                            <CarouselItem
+                              src={`/images/icon/menu/${v.icon ? v.icon : `${_.snakeCase(v.title)}.svg`}`}
+                              text={v.title}
+                            />
+                          </CardActionArea>
+                        </Link>
+                      ))}
+                    </BoxStyled>
                   </Grid>
                 </Grid>
-              </BoxStyled>
+              </BoxStyled2>
             </Grid>
-
-            <Grid item xs={10}>
-              <BoxStyled height={downSm ? 'auto' : '100%'}>
-                {whatsInSurabaya.map((v, i) => (
-                  <Link key={i} href={v.url ? v.url : '#'} passHref>
-                    {/* <Link key={i} href={`/id/page/0/${v.id}/${_.kebabCase(v.title)}`} passHref> */}
-                    <CardActionArea component="a" target='_blank' sx={{ borderRadius: 4 }}>
-                      <CarouselItem
-                        src={`/images/icon/menu/${v.icon ? v.icon : `${_.snakeCase(v.title)}.svg`}`}
-                        text={v.title}
-                        />
-                    </CardActionArea>
-                  </Link>
-                ))}
-              </BoxStyled>
-            </Grid>
-
-            <Grid item xs={2}>
-              <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0,0,0,0)`, border: `1px solid ${hijauRamadhan}`, borderRadius:`100px`, padding:`2rem 0`}}>
-                <Typography onMouseEnter={(e) => textToSpeech(e, true)} sx={{ textOrientation: 'sideways', writingMode: 'vertical-lr', textTransform: 'uppercase' }} style={{ color: hijauRamadhan }}>
-                  <b>Ada Apa Di Surabaya</b>
-                </Typography>
-              </BoxStyled>
-            </Grid>
-
           </Grid>
         </Grid >
-
-
-        {/* <Grid item xs={12} sm={4}>
-        <BoxStyled height={downSm ? 'auto' : '100%'}>
-          <Typography onMouseEnter={(e) => textToSpeech(e, true)}>
-            Ada apa di <span>Surabaya ?</span>
-          </Typography>
-        </BoxStyled>
-      </Grid>
-
-      <Grid item xs={12} sm={8}>
-      {loading ? (
-          <Grid container spacing={0}>
-            {[...new Array(2)].map((_v, i) => (
-              <Grid key={i} item sm={6}>
-                <Box paddingY={6} marginLeft={3}>
-                  <Skeleton
-                    variant="rectangular"
-                    width="100%"
-                    sx={{
-                      paddingTop: '100%',
-                      borderRadius: 3,
-                    }}
-                  />
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        ) : (
-          <CarouselSmall data={whatsInSurabaya} />
-        )}
-      </Grid> */}
-
       </Grid >
     </Box>
   );
