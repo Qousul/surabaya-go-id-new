@@ -75,7 +75,7 @@ const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
           gridSpacing={2}
           gridImage={12}
           gridContent={12}
-          truncateTitle={50}
+          truncateTitle={40}
           withDescription={false}
           
           slidesToShow={downSm ? 1 : 3}
