@@ -57,7 +57,7 @@ const HomeSection4: React.FunctionComponent<Props> = ({ data }: Props) => {
   const loading = false;
   return (
     <>
-    <Title text="Agenda Terbaru" iconJudul='/images/icon/accent/accentIco1.svg'/>
+    <Title colortext='#fff' text="Agenda Terbaru" iconJudul='/images/icon/accent/accentIco1.svg'/>
     <BoxStyled>
       {loading ? (
         <Skeleton

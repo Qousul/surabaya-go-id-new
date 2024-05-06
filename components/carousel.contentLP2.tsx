@@ -7,7 +7,7 @@ import { fontSize } from 'styles/theme';
 import { StyledBox } from 'styles/carousel';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { NewsType } from 'components/home.section3';
-// import NewsItem from 'components/news.item';
+import NewsItem from './news.item';
 import CardAgenda from './card.agenda';
 import { Arrow } from 'components/carousel.small';
 import Element3 from 'public/images/icon/element_3.svg';
@@ -27,7 +27,7 @@ interface Props {
 };
 
 const defGridSpacing = 1;
-const defTruncateTitle = 35;
+const defTruncateTitle = 30;
 const defFontSizeProps = (fontSize - 1);
 export const defFontSizeDate = (fontSize - 4);
 
@@ -90,19 +90,29 @@ const CarouselContentLP2: React.FunctionComponent<Props> = ({
         />
         <Slider ref={slider} {...settings}>
           {data.map((v, i) => (
-            <CardAgenda
-              key={i}
-              data={v}
-              gridSpacing={gridSpacing}
-              truncateTitle={truncateTitle}
-              fontSizeTitle={fontSizeProps}
-              fontSizeDate={defFontSizeDate}
-              withDescription={withDescription}
-              gridImage={gridImage}
-              gridContent={gridContent}
-              truncateDescription={truncateDescription}
-              route={route}
-            />
+            // <CardAgenda
+            //   key={i}
+            //   data={v}
+            //   gridSpacing={gridSpacing}
+            //   truncateTitle={truncateTitle}
+            //   fontSizeTitle={fontSizeProps}
+            //   fontSizeDate={defFontSizeDate}
+            //   withDescription={withDescription}
+            //   gridImage={gridImage}
+            //   gridContent={gridContent}
+            //   truncateDescription={truncateDescription}
+            //   route={route}
+            // />
+            <NewsItem
+                key={i}
+                data={v}
+                gridSpacing={defGridSpacing}
+                truncateTitle={defTruncateTitle}
+                fontSizeTitle={defFontSizeProps}
+                fontSizeDate={defFontSizeDate}
+                withDescription={false}
+                route={route}
+              />
           ))}
         </Slider>
         <Arrow

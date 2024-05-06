@@ -16,6 +16,7 @@ import useTextToSpeech from 'hooks/useTextToSpeech';
 
 interface Props {
   text: string;
+  colortext?: string;
   iconJudul?: string;
   iconJudul2?: string;
   buttonText?: string;
@@ -67,6 +68,7 @@ const Title: React.FunctionComponent<Props> = ({
   paddingX,
   withBackground,
   justifyContent,
+  colortext,
   onBack,
   onClick,
 }: Props) => {
@@ -102,7 +104,7 @@ const Title: React.FunctionComponent<Props> = ({
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}
           sx={{
-            color: withBackground ? mode == 'dark' ? 'background.paper' : 'text.primary' : 'primary.main',
+            color: withBackground ? mode == 'dark' ? 'background.paper' : 'text.primary' : colortext,
             fontSize: {
               xs: (fontSize + 2) + accessibility.fontSize,
               sm: (fontSize + 4) + accessibility.fontSize,

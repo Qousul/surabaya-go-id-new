@@ -90,7 +90,18 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
   console.log("whatsInSurabaya", whatsInSurabaya);
 
   return (
-    <Box sx={{ padding: `5rem 0` }}>
+    // <Box sx={{ padding: `5rem 0` }}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        padding: `2rem 2rem`,
+        backgroundColor: `#fff`,
+        margin: 0,
+        borderRadius: `3rem`,
+      }}
+    >
+      <Layout>
+        <>
       <Grid container spacing={2} alignItems="stretch" overflow={downSm ? 'hidden' : 'visible'}>
 
 
@@ -145,7 +156,10 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
           </Grid>
         </Grid >
       </Grid >
-    </Box>
+      </>
+      </Layout>
+    </Container>
+    // </Box>
   );
 };
 

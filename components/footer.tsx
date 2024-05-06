@@ -24,7 +24,6 @@ import LogoCc from 'public/images/logo_cc.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
 import useTextToSpeech from 'hooks/useTextToSpeech';
-import { hijauRamadhan } from 'styles/theme';
 
 interface Props {
   load: boolean;
@@ -32,13 +31,17 @@ interface Props {
 
 const heightCopy = fontSize + 16;
 const StyledContainer = styled(Container)(({ theme }) => ({
-  // backgroundColor: hijauRamadhan,
-  backgroundImage: `url('/images/batik.png')`,
-  backgroundSize: "cover",
-  backgroundPosition:"center",
-  backgroundBlendMode: `screen`,
-  borderRadius: "30px 30px 0px 0px",
-  padding: theme.spacing(7, 0),
+  background:
+  theme.palette.mode == "dark"
+    ? theme.palette.background.paper
+    : hijauRamadhan,
+  backgroundImage : `url(images/batik.png)`,
+  backgroundSize : `cover`,
+  backgroundRepeat : `repeat`,
+  backgroundPosition : `center`,
+  backgroundBlendMode : `screen`,
+  borderRadius : `3rem 3rem 0 0`,
+  padding: theme.spacing(10, 0),
   overflow: 'hidden',
   '& .contact': {
     borderBottom: `2px solid ${theme.palette.primary.main}`,
@@ -149,7 +152,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                 <Logo />
               </Grid>
               <Grid item xs={4} md={12}>
-                <Typography variant='subtitle2' align={downMd? 'center' : 'left'}>Dikelola oleh Bidang Informasi dan Komunikasi Publik serta Statistik Dinas Komunikasi dan Informatika Kota Surabaya</Typography>
+                <Typography variant='subtitle2' align={downMd? 'center' : 'left'} color={`white`}>Dikelola oleh Bidang Informasi dan Komunikasi Publik serta Statistik Dinas Komunikasi dan Informatika Kota Surabaya</Typography>
               </Grid>
               <Grid item xs={4} md={12}>
                 <Box
@@ -166,7 +169,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                             '& svg': {
                               height: fontSize + 16,
                               '& path': {
-                                fill: hijauRamadhan,
+                                fill: `white`,
                               },
                             },
                             margin: downMd? `0 1rem` : `0 1rem 0 0`
@@ -203,7 +206,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                         '& svg': {
                           height: fontSize + 30,
                           '& path': {
-                            fill: hijauRamadhan,
+                            fill: `white`,
                           },
                         },
                         display: `flex`,
@@ -219,6 +222,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                       onMouseEnter={(e) => textToSpeech(e, true)}
                       fontSize={(fontSize - 2) + accessibility.fontSize}
                       textAlign={downMd?"center":"start"}
+                      color={`white`}
                       marginTop={1}
                       marginBottom={downSm ? 2 : 1}
                       sx={{
@@ -237,11 +241,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
           <Grid item xs={12} md={4}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Box
-                  sx={{
-                    backgroundColor:`primary.main`,
-                    borderRadius:`100px`,
-                  }}>
+                <Box>
                   <Search isFooter={true} />
                 </Box>
               </Grid>
@@ -258,6 +258,9 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                     sx={{
                       '& svg': {
                         height: heightCopy,
+                        '& path': {
+                          fill: `white`,
+                        },
                       },
                       marginRight: `0.5rem`,
                       display: 'flex',
@@ -268,6 +271,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                   </Box>
                   <Typography
                     fontSize={fontSize + 2}
+                    color={`white`}
                   >
                     {`${new Date().getFullYear()} Pemerintah Kota Surabaya`}
                   </Typography>
@@ -306,7 +310,6 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                   {v.img == 'user.svg' ? <User /> : v.img == 'contact.svg' ? <Contact /> : <Location />}
                 </Box>
                 <Typography
-                  color="#fff"
                   onMouseEnter={(e) => textToSpeech(e, true)}
                   fontSize={(fontSize - 2) + accessibility.fontSize}
                   textAlign="center"

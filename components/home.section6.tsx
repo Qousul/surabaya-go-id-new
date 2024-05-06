@@ -57,7 +57,7 @@ const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
   const loading = false;
   return (
     <>
-    <Title text="Video" iconJudul='/images/icon/accent/accentIco1.svg'/>
+    <Title colortext='#fff' text="Video" iconJudul='/images/icon/accent/accentIco1.svg'/>
     <BoxStyled>
       {loading ? (
         <Skeleton
