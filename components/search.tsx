@@ -15,7 +15,7 @@ interface Props {
 
 const heightAfter = 24;
 const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.secondary.main,
   borderRadius: theme.spacing(5),
   display: 'flex',
   width: '100%',
@@ -35,7 +35,7 @@ const StyledInput = styled(Input)(({ theme }) => ({
     top: '50%',
     '& svg': {
       '& path': {
-        fill: `${theme.palette.secondary.main} !important`,
+        fill: `${theme.palette.common.white} !important`,
       },
     },
   },
@@ -50,7 +50,7 @@ const StyledInput = styled(Input)(({ theme }) => ({
   },
   '& input': {
     color: theme.palette.common.white,
-    fontWeight: 700,
+    fontWeight: 500,
     padding: 0,
     '&::placeholder': {
       color: theme.palette.common.white,
@@ -87,8 +87,8 @@ const Search: React.FunctionComponent<Props> = ({ isFooter }: Props) => {
   return (
     <StyledBox
       sx={{
-        paddingTop: isFooter ? 1.2 : 1.7,
-        paddingBottom: isFooter ? 1.5 : 2,
+        paddingTop: isFooter ? 0.75 : 1,
+        paddingBottom: isFooter ? 0.75 : 1,
         paddingLeft: isFooter ? 6 : 8,
         paddingRight: isFooter ? 3 : 5,
         justifyContent: isFooter ? 'flex-start' : 'center',

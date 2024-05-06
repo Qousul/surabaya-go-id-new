@@ -67,20 +67,6 @@ export const Logo = React.memo(() => {
       }}
     >
       <img src={`/images/logo/logo-surabaya.png`} height={40} />
-      {/*{!downSm &&
-        <Typography
-          marginLeft={1.5}
-          fontWeight={600}
-          fontSize={(fontSize - 3) + accessibility.fontSize}
-          textTransform="uppercase"
-          sx={{
-            color: 'text.primary',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {`Pemerintah Kota Surabaya`}
-        </Typography>
-      }*/}
     </Box>
   );
 });
@@ -107,8 +93,9 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     // color: theme.palette.text.primary,
     color: 'white',
     fontWeight: 600,
+    fontSize: '0.5rem',
     textTransform: 'uppercase',
-    padding: theme.spacing(0.5),
+    padding: theme.spacing(0.05),
     display: 'flex',
     alignItems: 'center',
     

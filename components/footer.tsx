@@ -23,6 +23,7 @@ import LogoCc from 'public/images/logo_cc.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
 import useTextToSpeech from 'hooks/useTextToSpeech';
+import { hijauRamadhan } from 'styles/theme';
 
 interface Props {
   load: boolean;
@@ -30,7 +31,12 @@ interface Props {
 
 const heightCopy = fontSize + 16;
 const StyledContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
+  // backgroundColor: hijauRamadhan,
+  backgroundImage: `url('/images/batik.png')`,
+  backgroundSize: "cover",
+  backgroundPosition:"center",
+  backgroundBlendMode: `screen`,
+  borderRadius: "30px 30px 0px 0px",
   padding: theme.spacing(7, 0),
   overflow: 'hidden',
   '& .contact': {
@@ -159,6 +165,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
                   {v.img == 'user.svg' ? <User /> : v.img == 'contact.svg' ? <Contact /> : <Location />}
                 </Box>
                 <Typography
+                  color="#fff"
                   onMouseEnter={(e) => textToSpeech(e, true)}
                   fontSize={(fontSize - 2) + accessibility.fontSize}
                   textAlign="center"

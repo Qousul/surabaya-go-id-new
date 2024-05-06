@@ -22,6 +22,8 @@ import { getAgenda } from 'utils/services/agenda';
 import { getServices } from 'utils/services/service';
 import { SliderType } from 'components/home.section1';
 import { NewsType } from 'components/home.section3';
+import { hijauRamadhan } from 'styles/theme';
+import { Container } from '@mui/material';
 
 export interface News {
   title: string;
@@ -117,6 +119,82 @@ const BoxStyled1 = styled(Box)(({ theme }) => ({
   },
 }));
 
+const BoxStyled2 = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  overflow: 'hidden',
+  backgroundColor: hijauRamadhan,
+  // background: `linear-gradient(0deg, ${theme.palette.mode == 'dark' ? theme.palette.background.paper : hijauRamadhan})`,
+  '& .wrapper-svg1, & .wrapper-svg2': {
+    position: 'absolute',
+    zIndex: 0,
+    '& svg': {
+      height: '100%',
+    },
+  },
+  '& .wrapper-svg1': {
+    height: theme.spacing(75),
+    width: theme.spacing(75),
+    bottom: 0,
+    left: 0,
+    transform: 'translate(-55%, 50%)',
+    '& svg circle': {
+      stroke: `${theme.palette.secondary.main} !important`,
+    },
+  },
+  '& .wrapper-svg2': {
+    bottom: 0,
+    right: 0,
+    height: theme.spacing(50),
+    width: theme.spacing(50),
+    transform: 'translate(70%, 0)',
+    '& svg': {
+      '& path': {
+        stroke: `${theme.palette.primary.main} !important`,
+      },
+    },
+  },
+  '& .box-section4': {
+    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.background.paper : theme.palette.grey[100],
+  },
+  '& .box-inner': {
+    position: 'relative',
+    zIndex: 0,
+    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+    '& .wrapper-svg4, & .wrapper-svg5': {
+      position: 'absolute',
+      zIndex: 0,
+      '& svg': {
+        height: '100%',
+      },
+    },
+    '& .wrapper-svg4': {
+      height: theme.spacing(75),
+      width: theme.spacing(75),
+      top: 0,
+      right: 0,
+      transform: 'translate(55%, -50%)',
+      '& svg circle': {
+        fill: `${theme.palette.secondary.main} !important`,
+      },
+    },
+    '& .wrapper-svg5': {
+      bottom: 0,
+      left: 0,
+      height: theme.spacing(50),
+      width: theme.spacing(50),
+      transform: 'translate(-55%, 50%)',
+      '& svg path': {
+        stroke: `${theme.palette.secondary.main} !important`,
+      },
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    '& .wrapper-svg1, & .wrapper-svg2, & .wrapper-svg4, & .wrapper-svg5': {
+      display: 'none',
+    },
+  },
+}));
+
 const Home: NextPage<Props> = ({
   carousel,
   news,
@@ -133,9 +211,22 @@ const Home: NextPage<Props> = ({
         <script type="text/javascript" async src="https://widget.kominfo.go.id/gpr-widget-kominfo.min.js"></script>
       </Head>
       <HomeSection1 data={carousel}/>
-      <Layout paddingY={0}>
-        <HomeSection2 />
-      </Layout>
+      {/* <HomeSection2/> */}
+      {/* <Layout>
+        <HomeSection2/>
+      </Layout> */}
+       {/* <Container maxWidth="lg" sx={{
+        
+        }}>
+       <HomeSection2/>
+      </Container> */}
+      <Container maxWidth="xl" sx={{
+        backgroundColor: hijauRamadhan,
+        margin: 0,
+        padding: `1rem`
+      }}>
+        <HomeSection2/>
+      </Container>
       <BoxStyled1>
         <Layout paddingY={0}>
           <>
