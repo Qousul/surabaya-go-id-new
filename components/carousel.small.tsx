@@ -28,6 +28,16 @@ const StyledBoxArrow = styled(Box)(({ theme }) => ({
     left: 0,
     transform: 'translate(-50%, -50%) rotate(180deg)',
   },
+
+  '&.slick-next-lp, &.next': {
+    right: 0,
+    transform: 'none',
+  },
+  '&.slick-prev-lp, &.prev': {
+    left: 0,
+    transform: 'rotate(180deg)',
+  },
+
   '&.slick-next, &.next, &.slick-prev, &.prev': {
     '& .wrapper-svg': {
       '& svg': {
@@ -94,6 +104,33 @@ export const Arrow = memo(
             boxShadow: 4,
           },
         }}
+      >
+        <Box
+          className="wrapper-svg"
+          onClick={onClick}
+          sx={{
+            '& svg': {
+              width: `${size}px`,
+              height: `${size}px`,
+              display: 'block',
+            },
+          }}
+        >
+          <NavigationIcon />
+        </Box>
+      </StyledBoxArrow>
+    );
+  },
+);
+
+export const ArrowLP = memo(
+  function Arrow(props: any) {
+    const { className, onClick, size } = props;
+    const accessibility = React.useContext(AccessibilityContext);
+    return (
+      <StyledBoxArrow
+        className={`${className} ${accessibility.css.negative ? 'negative' : ''}`}
+        onClick={onClick}
       >
         <Box
           className="wrapper-svg"

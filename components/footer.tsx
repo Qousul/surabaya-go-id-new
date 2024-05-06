@@ -7,18 +7,19 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { styled } from '@mui/material/styles';
-import { fontSize } from 'styles/theme';
+import { fontSize, hijauRamadhan } from 'styles/theme';
 import { Logo } from 'components/header';
 import Search from 'components/search';
 import dataContact from 'data/footer/contact.json';
 import dataSocialMedia from 'data/footer/social_media.json';
-import User from 'public/images/icon/footer/user.svg';
+import Email from 'public/images/icon/footer/email.svg';
 import Contact from 'public/images/icon/footer/contact.svg';
 import Location from 'public/images/icon/footer/location.svg';
 import Facebook from 'public/images/icon/social_media/facebook.svg';
-import Twitter from 'public/images/icon/social_media/twitter.svg';
+import Twitter from 'public/images/icon/social_media/xtwitter.svg';
 import Instagram from 'public/images/icon/social_media/instagram.svg';
 import Youtube from 'public/images/icon/social_media/youtube.svg';
+import Tiktok from 'public/images/icon/social_media/tiktok.svg';
 import LogoCc from 'public/images/logo_cc.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
@@ -122,6 +123,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 
 const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
   const { downSm } = React.useContext(BreakpointsContext);
+  const { downMd } = React.useContext(BreakpointsContext);
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
   return (
@@ -136,7 +138,146 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
       <Container
         maxWidth="lg"
       >
-        <Box display="flex" justifyContent="center">
+        <Grid container spacing={downMd?12:2}>
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={3} 
+              direction={downMd? "column" : "row"}
+              justifyContent={downMd? "center" : "flex-start"}
+              alignItems="center"
+            >
+              <Grid item xs={4} md={12}>
+                <Logo />
+              </Grid>
+              <Grid item xs={4} md={12}>
+                <Typography variant='subtitle2' align={downMd? 'center' : 'left'}>Dikelola oleh Bidang Informasi dan Komunikasi Publik serta Statistik Dinas Komunikasi dan Informatika Kota Surabaya</Typography>
+              </Grid>
+              <Grid item xs={4} md={12}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  {dataSocialMedia.map((v, i) => (
+                    <Link key={i} href={v.link}>
+                      <a target="_blank">
+                        <Box className="wrapper-svg"
+                          sx={{
+                            '& svg': {
+                              height: fontSize + 16,
+                              '& path': {
+                                fill: hijauRamadhan,
+                              },
+                            },
+                            margin: downMd? `0 1rem` : `0 1rem 0 0`
+                          }}
+                        >
+                          {
+                            v.title == 'Facebook'
+                              ? <Facebook />
+                              : v.title == 'Twitter'
+                                ? <Twitter />
+                                : v.title == 'Instagram'
+                                  ? <Instagram />
+                                  : v.title == 'Youtube'
+                                  ? <Youtube/>
+                                  : <Tiktok/>
+                          }
+                        </Box>
+                      </a>
+                    </Link>
+                  ))}
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={2}>
+              {dataContact.map((v) => (
+                <>
+                  <Grid item xs={12} md={3}>
+                    <Box className="wrapper-svg"
+                      sx={{
+                        height: `100%`,
+                        '& svg': {
+                          height: fontSize + 30,
+                          '& path': {
+                            fill: hijauRamadhan,
+                          },
+                        },
+                        display: `flex`,
+                        alignItems: `center`,
+                        justifyContent: `center`,
+                      }}
+                    >
+                      {v.img == 'user.svg' ? <Email /> : v.img == 'contact.svg' ? <Contact /> : <Location />}
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={9}>
+                    <Typography
+                      onMouseEnter={(e) => textToSpeech(e, true)}
+                      fontSize={(fontSize - 2) + accessibility.fontSize}
+                      textAlign={downMd?"center":"start"}
+                      marginTop={1}
+                      marginBottom={downSm ? 2 : 1}
+                      sx={{
+                        whiteSpace: 'pre-line',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {v.description}
+                    </Typography>
+                  </Grid>
+                </>
+              ))}
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    backgroundColor:`primary.main`,
+                    borderRadius:`100px`,
+                  }}>
+                  <Search isFooter={true} />
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent : downMd?`center` : `flex-start`,
+                    marginBottom: downMd? `3rem` : `0`
+                  }}
+                >
+                  <Box className="wrapper-svg"
+                    sx={{
+                      '& svg': {
+                        height: heightCopy,
+                      },
+                      marginRight: `0.5rem`,
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <LogoCc />
+                  </Box>
+                  <Typography
+                    fontSize={fontSize + 2}
+                  >
+                    {`${new Date().getFullYear()} Pemerintah Kota Surabaya`}
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        {/* <Box display="flex" justifyContent="center">
           <Logo />
         </Box>
 
@@ -253,7 +394,7 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
             {`${new Date().getFullYear()} Pemerintah Kota Surabaya`}
           </Typography>
         </Box>
-        
+         */}
       </Container>
     </StyledContainer>
   );

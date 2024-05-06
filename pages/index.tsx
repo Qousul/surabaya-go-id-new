@@ -13,6 +13,7 @@ import HomeSection2 from 'components/home.section2';
 import HomeSection3 from 'components/home.section3';
 import HomeSection4 from 'components/home.section4';
 import HomeSection5 from 'components/home.section5';
+import HomeSection6 from 'components/home.section6';
 import Element1 from 'public/images/icon/element_1.svg';
 import Element2 from 'public/images/icon/element_2.svg';
 import Element4 from 'public/images/icon/element_4.svg';
@@ -83,7 +84,8 @@ const BoxStyled1 = styled(Box)(({ theme }) => ({
   '& .box-inner': {
     position: 'relative',
     zIndex: 0,
-    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+    // backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
+    backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : `white`,
     '& .wrapper-svg4, & .wrapper-svg5': {
       position: 'absolute',
       zIndex: 0,
@@ -210,32 +212,19 @@ const Home: NextPage<Props> = ({
         <meta name="description" content="Pemerintah Kota Surabaya" />
         <script type="text/javascript" async src="https://widget.kominfo.go.id/gpr-widget-kominfo.min.js"></script>
       </Head>
-      <HomeSection1 data={carousel}/>
-      {/* <HomeSection2/> */}
-      {/* <Layout>
-        <HomeSection2/>
-      </Layout> */}
-       {/* <Container maxWidth="lg" sx={{
-        
-        }}>
-       <HomeSection2/>
-      </Container> */}
-      <Container maxWidth="xl" sx={{
-        backgroundColor: hijauRamadhan,
-        margin: 0,
-        padding: `1rem`
-      }}>
-        <HomeSection2/>
-      </Container>
+      <HomeSection1 data={carousel} />
+      <Layout paddingY={0}>
+        <HomeSection2 />
+      </Layout>
       <BoxStyled1>
-        <Layout paddingY={0}>
+        <Layout>
           <>
-            <Box className="wrapper-svg1">
+            {/* <Box className="wrapper-svg1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg2">
               <Element4 />
-            </Box>
+            </Box> */}
             <HomeSection3 data={news} />
           </>
         </Layout>
@@ -243,23 +232,26 @@ const Home: NextPage<Props> = ({
           <Layout>
             <>
               <HomeSection4 data={agenda} />
-              <Title
-                text="Pelayanan Pemerintah Kota Surabaya"
-                paddingY={0}
-              />
             </>
           </Layout>
         </Box>
         <Box className="box-inner">
           <Layout paddingY={0}>
             <>
-              <Box className="wrapper-svg4">
+              {/* <Box className="wrapper-svg4">
                 <Element2 />
-              </Box>
-              <Box className="wrapper-svg5">
+                </Box>
+                <Box className="wrapper-svg5">
                 <Element4 />
-              </Box>
+              </Box> */}
               <HomeSection5 data={services} />
+            </>
+          </Layout>
+        </Box>
+        <Box className="box-section4">
+          <Layout>
+            <>
+              <HomeSection6 data={agenda} />
             </>
           </Layout>
         </Box>

@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { fontSize } from 'styles/theme';
 import { AccessibilityContext } from 'contexts/accessibility';
+import { BreakpointsContext } from 'contexts/breakpoints';
 import useTextToSpeech from 'hooks/useTextToSpeech';
 
 interface Props {
@@ -18,6 +19,8 @@ const CarouselItem: React.FunctionComponent<Props> = ({
   onClick,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
+  const { downMd } = React.useContext(BreakpointsContext);
+  const { downSm } = React.useContext(BreakpointsContext);
   const { textToSpeech } = useTextToSpeech();
   const handleClick = React.useCallback(() => {
     if (onClick) {
@@ -31,21 +34,20 @@ const CarouselItem: React.FunctionComponent<Props> = ({
       justifyContent:`center`,
       alignItems:`center`,
       textAlign:`center`,
-      padding:`0px 2rem`,
       borderLeft:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid white`,
-      borderRight:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid white`
+      borderRight:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid white`,
       }}>
       
       <img src={src} style={{
-        maxHeight: `5rem`,
-        marginBottom: `3rem`
+        maxHeight: downMd ? `2rem` : `5rem`,
+        marginBottom: downMd? `1rem` : `3rem`
       }}/>
 
       {text &&
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}
-          sx={{
-            fontSize: (fontSize + 2) + accessibility.fontSize,
+          style={{
+            fontSize:downSm?`10pt`:(fontSize + 2) + accessibility.fontSize  
           }}
         >
           {text}
