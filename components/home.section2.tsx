@@ -29,17 +29,6 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   padding: theme.spacing(2),
-  "& .MuiTypography-root": {
-    fontSize: fontSize + 6,
-    fontWeight: 300,
-    color: theme.palette.common.white,
-    lineHeight: 1.2,
-    "& span": {
-      display: "block",
-      fontWeight: 800,
-      fontSize: fontSize + 18,
-    },
-  },
   [theme.breakpoints.down("sm")]: {
     borderRadius: theme.spacing(borderRadius),
     "& .MuiTypography-root": {
@@ -57,6 +46,24 @@ const BoxStyled2 = styled(Box)(({ theme }) => ({
   '& .MuiTypography-root': {
     color: theme.palette.common.white,
     lineHeight: 1.2,
+  },
+}));
+
+const BoxCard = styled(Box)(({theme})=>({
+  backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.common.white,
+  display: "flex",
+  borderRadius: "50px",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: theme.spacing(2),
+  [theme.breakpoints.down("sm")]: {
+    borderRadius: theme.spacing(borderRadius),
+    "& .MuiTypography-root": {
+      fontSize: fontSize + 4,
+      "& span": {
+        fontSize: fontSize + 14,
+      },
+    },
   },
 }));
 
@@ -91,13 +98,15 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
 
   return (
     // <Box sx={{ padding: `5rem 0` }}>
-    <Container
-      maxWidth="xl"
+    <BoxCard
       sx={{
         padding: `2rem 2rem`,
-        backgroundColor: `#fff`,
+        // backgroundColor: `#fff`,
         margin: 0,
         borderRadius: `3rem`,
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
       }}
     >
       <Layout>
@@ -119,7 +128,7 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
             <Grid item xs={12}>
               <Grid container spacing={0} sx={{ backgroundColor: `white`, border: `1px solid ${hijauRamadhan}`, padding: `1rem 2rem 2rem`, borderRadius: `50px` }}>
                 <Grid item xs={12}>
-                  <Title text="Tentang Surabaya" iconJudul='/images/icon/accent/accentIco2.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
+                  <Title colortext="hijauramadhan" text="Tentang Surabaya" iconJudul='/images/icon/accent/accentIco2.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
                 </Grid>
                 <Grid item xs={12}>
                   <Typography onMouseEnter={(e) => textToSpeech(e, true)} style={{ color: hijauRamadhan, fontSize: `16px` }}>
@@ -133,7 +142,7 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
               <BoxStyled2>
                 <Grid container spacing={0} sx={{ border: `1px solid ${hijauRamadhan}`, padding: `1rem 2rem 2rem`, borderRadius: `50px` }}>
                   <Grid item xs={12}>
-                    <Title text="Ada Apa di Surabaya" iconJudul='/images/icon/accent/accentIco1.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
+                    <Title text="Ada Apa di Surabaya" iconJudul='/images/icon/accent/accentIco2white.svg' iconJudul2='/images/icon/accent/accentIco1.svg' paddingY={2} />
                   </Grid>
                   <Grid item xs={12}>
                     <BoxStyled height={downSm ? 'auto' : '100%'}>
@@ -158,7 +167,7 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
       </Grid >
       </>
       </Layout>
-    </Container>
+    </BoxCard>
     // </Box>
   );
 };

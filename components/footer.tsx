@@ -40,7 +40,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundRepeat : `repeat`,
   backgroundPosition : `center`,
   backgroundBlendMode : `screen`,
-  borderRadius : `3rem 3rem 0 0`,
+  // borderRadius : `3rem 3rem 0 0`,
   padding: theme.spacing(10, 0),
   overflow: 'hidden',
   '& .contact': {
