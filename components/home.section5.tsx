@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import { NewsType } from "components/home.section3";
-import { hijauRamadhan } from "styles/theme";
+import { hijauRamadhan, fontSize, borderRadius, } from "styles/theme";
 // import { ButtonStyled } from 'components/title';
 // import Element3 from 'public/images/icon/element_3.svg';
 import Title from "components/title";
@@ -28,8 +28,58 @@ interface Props {
 // const paddingList = 4;
 // const transition = 0.1;
 
+// const BoxStyled = styled(Box)(({ theme }) => ({
+//   padding: theme.spacing(6, 0),
+// }));
 const BoxStyled = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(6, 0),
+  backgroundColor: theme.palette.primary.main,
+  display: "flex",
+  borderRadius: "50px",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: theme.spacing(2),
+  // "& .MuiTypography-root": {
+  //   fontSize: fontSize + 6,
+  //   fontWeight: 300,
+  //   color: theme.palette.common.white,
+  //   lineHeight: 1.2,
+  //   "& span": {
+  //     display: "block",
+  //     fontWeight: 800,
+  //     fontSize: fontSize + 18,
+  //   },
+  // },
+  // [theme.breakpoints.down("sm")]: {
+  //   borderRadius: theme.spacing(borderRadius),
+  //   "& .MuiTypography-root": {
+  //     fontSize: fontSize + 4,
+  //     "& span": {
+  //       fontSize: fontSize + 14,
+  //     },
+  //   },
+  // },
+}));
+
+const BoxCard = styled(Box)(({theme})=>({
+  backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.common.white,
+  display: "flex",
+  borderRadius: "50px",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: theme.spacing(2),
+  [theme.breakpoints.down("sm")]: {
+    borderRadius: theme.spacing(borderRadius),
+    "& .MuiTypography-root": {
+      fontSize: fontSize + 4,
+      "& span": {
+        fontSize: fontSize + 14,
+      },
+    },
+  },
+}));
+
+const Typography1 = styled(Typography)(({theme})=>({
+  color: theme.palette.mode == 'dark' ? theme.palette.common.white : hijauRamadhan,
 }));
 
 const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
@@ -38,13 +88,13 @@ const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
   const { textToSpeech } = useTextToSpeech();
   const loading = false;
   return (
-    <Container
-      maxWidth="xl"
+    <BoxCard
       sx={{
-        padding: `2rem 2rem`,
-        backgroundColor: `#fff`,
         margin: 0,
         borderRadius: `3rem`,
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
       }}
     >
       <Layout>
@@ -101,18 +151,18 @@ const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
                           </Box>
                         </Grid>
                         <Grid item xs={10}>
-                          <Typography
+                          <Typography1
                             onMouseEnter={(e) => textToSpeech(e, true)}
                             sx={{
                               textAlign: "center",
                               textTransform: "uppercase",
-                              color: hijauRamadhan,
+                              // color: hijauRamadhan,
                               fontSize: downSm && `8pt`,
                               marginTop: downSm && "0.5rem",
                             }}
                           >
                             {v.title}
-                          </Typography>
+                          </Typography1>
                         </Grid>
                       </Grid>
                     </Link>
@@ -122,7 +172,7 @@ const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
           {/* </BoxStyled> */}
         </>
       </Layout>
-    </Container>
+    </BoxCard>
   );
 };
 

@@ -12,6 +12,7 @@ import HomeSection3 from "components/home.section3";
 import HomeSection4 from "components/home.section4";
 import HomeSection5 from "components/home.section5";
 import HomeSection6 from "components/home.section6";
+import HomeSection7 from "components/home.section7";
 import Element1 from "public/images/icon/element_1.svg";
 import Element2 from "public/images/icon/element_2.svg";
 import Element4 from "public/images/icon/element_4.svg";
@@ -54,6 +55,7 @@ const BoxStyled1 = styled(Box)(({ theme }) => ({
   backgroundRepeat: "repeat",
   backgroundPosition: "center",
   backgroundBlendMode: `screen`,
+  // backgroundAttachment:'fixed',
   "& .wrapper-svg1, & .wrapper-svg2": {
     position: "absolute",
     zIndex: 0,
@@ -92,91 +94,8 @@ const BoxStyled1 = styled(Box)(({ theme }) => ({
   "& .box-inner": {
     position: "relative",
     zIndex: 0,
-    // backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.primary.main,
     backgroundColor:
       theme.palette.mode == "dark" ? theme.palette.grey.A100 : `white`,
-    "& .wrapper-svg4, & .wrapper-svg5": {
-      position: "absolute",
-      zIndex: 0,
-      "& svg": {
-        height: "100%",
-      },
-    },
-    "& .wrapper-svg4": {
-      height: theme.spacing(75),
-      width: theme.spacing(75),
-      top: 0,
-      right: 0,
-      transform: "translate(55%, -50%)",
-      "& svg circle": {
-        fill: `${theme.palette.secondary.main} !important`,
-      },
-    },
-    "& .wrapper-svg5": {
-      bottom: 0,
-      left: 0,
-      height: theme.spacing(50),
-      width: theme.spacing(50),
-      transform: "translate(-55%, 50%)",
-      "& svg path": {
-        stroke: `${theme.palette.secondary.main} !important`,
-      },
-    },
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& .wrapper-svg1, & .wrapper-svg2, & .wrapper-svg4, & .wrapper-svg5": {
-      display: "none",
-    },
-  },
-}));
-
-const BoxStyled2 = styled(Box)(({ theme }) => ({
-  position: "relative",
-  overflow: "hidden",
-  backgroundColor: hijauRamadhan,
-  // background: `linear-gradient(0deg, ${theme.palette.mode == 'dark' ? theme.palette.background.paper : hijauRamadhan})`,
-  "& .wrapper-svg1, & .wrapper-svg2": {
-    position: "absolute",
-    zIndex: 0,
-    "& svg": {
-      height: "100%",
-    },
-  },
-  "& .wrapper-svg1": {
-    height: theme.spacing(75),
-    width: theme.spacing(75),
-    bottom: 0,
-    left: 0,
-    transform: "translate(-55%, 50%)",
-    "& svg circle": {
-      stroke: `${theme.palette.secondary.main} !important`,
-    },
-  },
-  "& .wrapper-svg2": {
-    bottom: 0,
-    right: 0,
-    height: theme.spacing(50),
-    width: theme.spacing(50),
-    transform: "translate(70%, 0)",
-    "& svg": {
-      "& path": {
-        stroke: `${theme.palette.primary.main} !important`,
-      },
-    },
-  },
-  "& .box-section4": {
-    backgroundColor:
-      theme.palette.mode == "dark"
-        ? theme.palette.background.paper
-        : theme.palette.grey[100],
-  },
-  "& .box-inner": {
-    position: "relative",
-    zIndex: 0,
-    backgroundColor:
-      theme.palette.mode == "dark"
-        ? theme.palette.grey.A100
-        : theme.palette.primary.main,
     "& .wrapper-svg4, & .wrapper-svg5": {
       position: "absolute",
       zIndex: 0,
@@ -227,13 +146,7 @@ const Home: NextPage<Props> = ({ carousel, news, agenda, services }: Props) => {
         ></script>
       </Head>
       <HomeSection1 data={carousel} />
-      <BoxStyled1
-        maxWidth="xl"
-        sx={{
-          margin: 0,
-          padding: `1rem`,
-        }}
-      >
+      <BoxStyled1 padding={2}>
         <HomeSection2 />
       </BoxStyled1>
       <BoxStyled1>
@@ -250,12 +163,8 @@ const Home: NextPage<Props> = ({ carousel, news, agenda, services }: Props) => {
           </>
         </Layout>
       </BoxStyled1>
-      <BoxStyled1 maxWidth="xl"
-        sx={{
-          margin: 0,
-          padding: `1rem`,
-        }}>
-      <HomeSection5 data={services} />
+      <BoxStyled1 padding={2}>
+        <HomeSection5 data={services} />
       </BoxStyled1>
       <BoxStyled1>
         <Layout>
@@ -263,6 +172,9 @@ const Home: NextPage<Props> = ({ carousel, news, agenda, services }: Props) => {
             <HomeSection6 data={agenda} />
           </>
         </Layout>
+      </BoxStyled1>
+      <BoxStyled1 padding={2}>
+        <HomeSection7 />
       </BoxStyled1>
     </React.Fragment>
   );
