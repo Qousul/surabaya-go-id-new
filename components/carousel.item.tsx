@@ -49,6 +49,7 @@ const CarouselItem: React.FunctionComponent<Props> = ({
           style={{
             fontSize:downSm?`10pt`:(fontSize + 2) + accessibility.fontSize  
           }}
+          color={`white`}
         >
           {text}
         </Typography>
