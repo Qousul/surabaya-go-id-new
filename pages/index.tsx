@@ -186,6 +186,7 @@ export const getServerSideProps = async () => {
     getNews(1, "", 15, "berita"),
     getAgenda(),
     getServices(),
+    getVideos(1),
   ]);
   let carousel = [];
   if (carouselData && carouselData.length > 0) {

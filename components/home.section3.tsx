@@ -84,7 +84,7 @@ const HomeSection3: React.FunctionComponent<Props> = ({ data }: Props) => {
           <Title
             colortext="#fff"
             text="Berita Terbaru"
-            buttonText="lihat semua"
+            buttonText="Lihat Berita"
             onClick={handleOnClick}
             iconJudul="/images/icon/accent/accentIco1.svg"
           />

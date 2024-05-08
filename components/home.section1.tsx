@@ -61,6 +61,9 @@ const StackedCard = styled(Card)(({ theme, index }) => ({
   "&:hover": {
     transform: "none",
     zIndex: 1,
+    width: "225px",
+    height: "325px",
+    transition: "transform 0.5s",
   },
   [theme.breakpoints.down("sm")]: {
     height: "150px",
