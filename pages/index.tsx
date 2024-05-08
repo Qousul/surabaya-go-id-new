@@ -169,7 +169,7 @@ const Home: NextPage<Props> = ({ carousel, news, agenda, services }: Props) => {
       <BoxStyled1>
         <Layout>
           <>
-            <HomeSection6 data={agenda} />
+            <HomeSection6/>
           </>
         </Layout>
       </BoxStyled1>

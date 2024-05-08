@@ -54,7 +54,8 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
-const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
+// const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
+const HomeSection6 = () => {
   const { downSm } = React.useContext(BreakpointsContext);
   // const loading = false;
 
