@@ -11,6 +11,8 @@ import { BreakpointsContext } from 'contexts/breakpoints';
 import CarouselContentLPVideo from './carousel.contentLPVideo';
 import { hijauRamadhan } from 'styles/theme';
 
+import { StatusCodes } from 'http-status-codes';
+
 interface Props {
   data: NewsType[];
 };
@@ -54,7 +56,34 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 
 const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
   const { downSm } = React.useContext(BreakpointsContext);
-  const loading = false;
+  // const loading = false;
+
+  const [ videos, setVideos ] = React.useState<NewsType[]>([]);
+  const [ loading, setLoading ] = React.useState(false);
+  const [ count, setCount ] = React.useState(null);
+
+  const getData = async (pageParams: number) => {
+    setLoading(true);
+    const fetchData = await fetch(`/api/data/webdisplay?page=${pageParams}&target=videos`, { method: 'GET' });
+    const results = await fetchData.json();
+    console.log('results', results);
+    if (fetchData.status == StatusCodes.OK) {
+      if (results && results.data && results.data.data && results.data.data.length > 0) {
+        setVideos(results.data.data);
+        const totalPage = results.data.total / results.data.records;
+        setCount(Math.ceil(totalPage));
+      } else {
+        setVideos(null);
+        setCount(0);
+      };
+    };
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    getData(1);
+  }, []);
+
   return (
     <>
     <Title colortext='#fff' text="Video" iconJudul='/images/icon/accent/accentIco1.svg'/>
@@ -71,15 +100,15 @@ const HomeSection6: React.FunctionComponent<Props> = ({ data }: Props) => {
         />
       ) : (
         <CarouselContentLPVideo
-          data={data}
+          data={videos}
           gridSpacing={2}
           gridImage={12}
           gridContent={12}
-          truncateTitle={50}
+          truncateTitle={40}
           withDescription={false}
           
           slidesToShow={downSm ? 1 : 3}
-          route="agenda"
+          route="videos"
         />
       )}
     </BoxStyled>
