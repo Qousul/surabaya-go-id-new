@@ -45,9 +45,20 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   padding: theme.spacing(6, 0),
 }));
 
+const TypographyStyled = styled(Typography)(({ theme }) => ({
+  color: `#121212`,
+  fontSize: theme.breakpoints.values.md ? fontSize + 50 : fontSize + 80,
+  margin: `0 1.5rem`,
+  marginTop: `1.5rem`,
+  textAlign: `center`,
+  display: `flex`,
+  alignItems: `center`,
+  fontWeight: 625,
+}));
+
 const CardStyled = styled(Box)(({ theme }) => ({
   width: `100%`,
-  height: `200px`,
+  height: `100%`,
   perspective: `1000px`,
   '&:hover': {
     '& .card-inner': {
@@ -74,7 +85,7 @@ const CardFront = styled(Box)(({ theme }) => ({
   display: `flex`,
   alignItems: `center`,
   overflow: `hidden`,
-  borderRadius: `10px`,
+  borderRadius: `15px`,
   justifyContent: `center`,
   fontSize: `24px`,
   transform: `rotateY(0deg)`,
@@ -88,16 +99,17 @@ const CardBack = styled(Box)(({ theme }) => ({
   backgroundColor: hijauRamadhan,
   color: `#fff`,
   border: `10px solid ${hijauRamadhan}`,
-  borderRadius: `10px`,
+  borderRadius: `15px`,
   justifyContent: `center`,
   fontSize: `24px`,
   transform: `rotateY(180deg)`,
   padding: `1rem`
 }));
 
-const BoxCard = styled(Box)(({theme})=>({
+const BoxCard = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.common.white,
   display: "flex",
+  flexDirection: `column`,
   borderRadius: "50px",
   justifyContent: "center",
   alignItems: "center",
@@ -116,6 +128,7 @@ const BoxCard = styled(Box)(({theme})=>({
 // const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
 const HomeSection5 = () => {
   const { downSm } = React.useContext(BreakpointsContext);
+  const { downMd } = React.useContext(BreakpointsContext);
   const accessibility = React.useContext(AccessibilityContext);
 
   const [photos, setPhotos] = React.useState<NewsType[]>([]);
@@ -143,75 +156,211 @@ const HomeSection5 = () => {
     console.log(photos[0])
   }, []);
 
-  const { textToSpeech } = useTextToSpeech();
-  // const loading = false;
+  const { textToSpeech } = useTextToSpeech();  
+
   return (
     <BoxCard
       sx={{
-        padding: `2rem 2rem`,
-        margin: 0,
-        borderRadius: `3rem`,
+        overflow: `hidden`,
+        padding: downSm ? `1rem 0rem` : `3rem 0rem`
       }}
     >
-      <Layout>
-        <>
-          {/* <BoxStyled className={accessibility.css.negative ? "negative" : ""}> */}
-          <Title
-            text="Foto"
-            iconJudul="/images/icon/accent/accentIco1.svg"
-          />
-          {!loading && (
+      <>
+        {!loading && (
+          <>
             <Box
               sx={{
                 display: `flex`,
-                flexWrap: `wrap`,
                 justifyContent: `center`,
+                width: downSm ? `300%` : downMd ? `225%` : `115%`,
               }}
             >
 
-              <Grid container spacing={2}>
+              {photos.slice(0, 4).map((v, i) => {
 
-                {photos.map((v, i) => {
+                return (
+                  <>
+                    {
+                      downMd ?
+                      i === 2 && (<TypographyStyled style={{fontSize: downSm && fontSize + 15, margin:`0 1rem`}}>Bangga</TypographyStyled>)
+                      :
+                      i === 1 && (<TypographyStyled>Bangga</TypographyStyled>)
+                    }
+                    {
+                      i < 12 && (
 
-                  return i <= 5 && (
-                    <Grid item xs={4} key={i}>
-                    <Link
-                    href={`/id/photos/${v.id ? v.id : "0"}/${
-                      v.name ? _.kebabCase(v.name) : "test-post"
-                    }`}
-                  >
-                    <a>
-                      <CardStyled>
-                        <CardInner className="card-inner">
-                          <CardFront>
-                            <Box sx={{
-                              height: `100%`,
-                              width: `100%`,
-                              backgroundImage: `url(https://webdisplay.surabaya.go.id/${v.feature_image})`,
-                              backgroundSize: `cover`,
-                            }}></Box>
-                          </CardFront>
-                          <CardBack>
-                            <Typography>{v.title}</Typography>
-                            <Typography variant="caption">
-                              {`${whatDayId(
-                                new Date(v.created_at)
-                              )} | ${timeAgo.format(new Date(v.created_at))}`}
-                            </Typography>
-                          </CardBack>
-                        </CardInner>
-                      </CardStyled>
-                    </a></Link>
-                    </Grid>
-                  );
-                })}
-              </Grid>
-
+                        <Box
+                          sx={{
+                            minWidth: downSm ? `100px` : downMd? `225px` : `325px`,
+                            minHeight: downSm ? `50px` : `125px`,
+                            marginRight: downSm ? i === 1 ? 0 : `0.5rem` : downMd ? i === 1 ? 0 : `1.5rem` : i === 0 ? 0 : `1.5rem`,
+                            marginTop: downSm? `0.5rem` : `1.5rem`,
+                          }}
+                        >
+                          <Link
+                            href={`/id/photos/${v.id ? v.id : "0"}/${v.name ? _.kebabCase(v.name) : "test-post"}`}
+                            key={i}
+                          >
+                            <a>
+                              <CardStyled>
+                                <CardInner className="card-inner">
+                                  <CardFront>
+                                    <Box sx={{
+                                      height: `100%`,
+                                      width: `100%`,
+                                      backgroundImage: `url(https://webdisplay.surabaya.go.id/${v.feature_image})`,
+                                      backgroundSize: `cover`,
+                                    }}></Box>
+                                  </CardFront>
+                                  <CardBack>
+                                    <Typography sx={{ fontSize: fontSize - 6, }}>{v.title}</Typography>
+                                    <Typography variant="caption" sx={{ fontSize: fontSize - 7, }}>
+                                      {`${whatDayId(
+                                        new Date(v.created_at)
+                                      )} | ${timeAgo.format(new Date(v.created_at))}`}
+                                    </Typography>
+                                  </CardBack>
+                                </CardInner>
+                              </CardStyled>
+                            </a>
+                          </Link>
+                        </Box>
+                      )
+                    }
+                  </>
+                );
+              })}
             </Box>
-          )}
-          {/* </BoxStyled> */}
-        </>
-      </Layout>
+            <Box
+              sx={{
+                display: `flex`,
+                justifyContent: `center`,
+                width: downSm ? `300%` : downMd ? `225%` : `115%`,
+              }}
+            >
+
+              {photos.slice(4, 8).map((v, i) => {
+
+                return (
+                  <>
+                    {
+                      downMd ?
+                      i === 2 && (<TypographyStyled style={{fontSize: downSm && fontSize + 15, margin:`0 1rem`}}>Menyapa</TypographyStyled>)
+                      :
+                      i === 3 && (<TypographyStyled>Menyapa</TypographyStyled>)
+                    }
+                    {
+                      i < 12 && (
+
+                        <Box
+                          sx={{
+                            minWidth: downSm ? `100px` : downMd? `225px` : `325px`,
+                            minHeight: downSm ? `50px` : `125px`,
+                            marginRight: downSm ? i === 1 ? 0 : `0.5rem` : downMd ? i === 1 ? 0 : `1.5rem` : i === 2 ? 0 : `1.5rem`,
+                            marginTop: downSm? `0.5rem` : `1.5rem`,
+                          }}
+                        >
+                          <Link
+                            href={`/id/photos/${v.id ? v.id : "0"}/${v.name ? _.kebabCase(v.name) : "test-post"}`}
+                            key={i}
+                          >
+                            <a>
+                              <CardStyled>
+                                <CardInner className="card-inner">
+                                  <CardFront>
+                                    <Box sx={{
+                                      height: `100%`,
+                                      width: `100%`,
+                                      backgroundImage: `url(https://webdisplay.surabaya.go.id/${v.feature_image})`,
+                                      backgroundSize: `cover`,
+                                    }}></Box>
+                                  </CardFront>
+                                  <CardBack>
+                                    <Typography sx={{ fontSize: fontSize - 6, }}>{v.title}</Typography>
+                                    <Typography variant="caption" sx={{ fontSize: fontSize - 7, }}>
+                                      {`${whatDayId(
+                                        new Date(v.created_at)
+                                      )} | ${timeAgo.format(new Date(v.created_at))}`}
+                                    </Typography>
+                                  </CardBack>
+                                </CardInner>
+                              </CardStyled>
+                            </a>
+                          </Link>
+                        </Box>
+                      )
+                    }
+                  </>
+                );
+              })}
+            </Box>
+            <Box
+              sx={{
+                display: `flex`,
+                justifyContent: `center`,
+                width: downSm ? `300%` : downMd ? `225%` : `115%`,
+              }}
+            >
+
+              {photos.slice(8, 12).map((v, i) => {
+
+                return (
+                  <>
+                    {
+                      downMd ?
+                      i === 2 && (<TypographyStyled style={{fontSize: downSm && fontSize + 15, margin:`0 1rem`}}>Warga</TypographyStyled>)
+                      :
+                      i === 1 && (<TypographyStyled>Warga</TypographyStyled>)
+                    }
+                    {
+                      i < 12 && (
+
+                        <Box
+                          sx={{
+                            minWidth: downSm ? `100px` : downMd? `225px` : `325px`,
+                            minHeight: downSm ? `50px` : `125px`,
+                            marginRight: downSm ? i === 1 ? 0 : `0.5rem` : downMd ? i === 1 ? 0 : `1.5rem` : i === 0 ? 0 : `1.5rem`,
+                            marginTop: downSm? `0.5rem` : `1.5rem`,
+                          }}
+                        >
+                          <Link
+                            href={`/id/photos/${v.id ? v.id : "0"}/${v.name ? _.kebabCase(v.name) : "test-post"}`}
+                            key={i}
+                          >
+                            <a>
+                              <CardStyled>
+                                <CardInner className="card-inner">
+                                  <CardFront>
+                                    <Box sx={{
+                                      height: `100%`,
+                                      width: `100%`,
+                                      backgroundImage: `url(https://webdisplay.surabaya.go.id/${v.feature_image})`,
+                                      backgroundSize: `cover`,
+                                    }}></Box>
+                                  </CardFront>
+                                  <CardBack>
+                                    <Typography sx={{ fontSize: fontSize - 6, }}>{v.title}</Typography>
+                                    <Typography variant="caption" sx={{ fontSize: fontSize - 7, }}>
+                                      {`${whatDayId(
+                                        new Date(v.created_at)
+                                      )} | ${timeAgo.format(new Date(v.created_at))}`}
+                                    </Typography>
+                                  </CardBack>
+                                </CardInner>
+                              </CardStyled>
+                            </a>
+                          </Link>
+                        </Box>
+                      )
+                    }
+                  </>
+                );
+              })}
+            </Box>
+          </>
+        )}
+
+      </>
     </BoxCard>
   );
 };

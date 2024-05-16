@@ -153,7 +153,7 @@ const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
                         <Grid item xs={10}>
                           <Typography1
                             onMouseEnter={(e) => textToSpeech(e, true)}
-                            sx={{
+                            style={{
                               textAlign: "center",
                               textTransform: "uppercase",
                               // color: hijauRamadhan,

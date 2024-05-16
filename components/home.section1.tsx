@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { Box, Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { heightHeader } from "styles/theme";
@@ -12,9 +12,11 @@ import Batik from "public/images/batik.png";
 // import Element2 from 'public/images/icon/element_2.svg';
 // import Element3 from 'public/images/icon/element_3.svg';
 import Sbytxt from "public/images/icon/surabaya.svg";
+import SbytxtLg from "public/images/icon/surabaya-lg.svg";
 import { BreakpointsContext } from "contexts/breakpoints";
 import { AccessibilityContext } from "contexts/accessibility";
-import HomeSection2 from "components/home.section2";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 // import { Height } from '@mui/icons-material';
 
 export interface SliderType {
@@ -41,10 +43,11 @@ interface Props {
 
 const StackedCard = styled(Card)(({ theme, index }) => ({
   border: "10px solid white",
-  transition: "transform 0.3s",
-  width: "200px",
-  height: "300px",
-  margin: "-20px",
+  borderRadius : "50px",
+  transition: "transform 0.5s ease-in-out",
+  width: "300px",
+  height: "450px",
+  // marginInline: "-75px",
   transform: `rotate(${
     index === 0
       ? -14
@@ -56,17 +59,20 @@ const StackedCard = styled(Card)(({ theme, index }) => ({
       ? 5
       : 14
   }deg) translateY(${
-    index === 0 || index === 4 ? "30px" : index === 2 ? "-10px" : "0"
+    index === 0 || index === 4 ? "50px" : index === 2 ? "-10px" : "0"
   })`,
   "&:hover": {
     transform: "none",
     zIndex: 1,
-    width: "225px",
-    height: "325px",
+    // width: "225px",
+    // height: "325px",
     transition: "transform 0.5s",
   },
   [theme.breakpoints.down("sm")]: {
     height: "150px",
+    borderRadius : "20px",
+    border: "5px solid white",
+    // width:"50px",
   },
 }));
 
@@ -76,7 +82,7 @@ const StackedCardMedia = styled(CardMedia)(({ theme }) => ({
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  minHeight: `100vh`,
+  minHeight: `120vh`,
   backgroundImage: `url(/images/bg-hero.png)`,
   backgroundPosition: `center`,
   backgroundSize: `cover`,
@@ -173,6 +179,29 @@ const StyledBox = styled(Box)(({ theme }) => ({
 const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
   const { downSm, downXl } = React.useContext(BreakpointsContext);
   const accessibility = React.useContext(AccessibilityContext);
+  const [margin, setMargin] = useState("-75px");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.scrollY;
+      if (currentPosition > 0) {
+        if(-75 + currentPosition < -20){
+          setMargin(`${-75 + currentPosition}px`,);
+        }else if(-75 + currentPosition > -20){
+          setMargin("-20px");
+        }
+      } else {
+        setMargin("-75px");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <StyledBox>
@@ -196,11 +225,15 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
               // flexWrap="wrap"
               // className="wrapper-svg"
             >
-              <Sbytxt/>
+               {isMobile ? (
+        <Sbytxt/>
+      ) : (
+        <SbytxtLg/>
+      )}
             </Box>
             <Typography
               textAlign="center"
-              fontSize={downSm ? fontSize - 1 : fontSize}
+              fontSize={downSm ? 24 - 1 : 24}
               fontWeight={500}
               lineHeight={1.5}
               color={`#ffffff`}
@@ -226,6 +259,12 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
                   // sx={{ width: 200, height: 300, m: -2 }}
                   key={index}
                   index={index}
+                  sx={{
+                    marginInline: margin,
+                    [theme.breakpoints.down('sm')]: {
+                      margin: '-20px',
+                    },
+                  }}
                 >
                   <StackedCardMedia
                     image={`https://surabaya.go.id${v.feature_image}`} // Ubah URL gambar sesuai kebutuhan Anda

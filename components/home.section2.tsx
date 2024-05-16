@@ -59,7 +59,7 @@ const BoxStyled2 = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Typography1 = styled(Typography)(({theme})=>({
+const Typography1 = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode == 'dark' ? theme.palette.common.white : hijauRamadhan,
 }));
 
@@ -139,75 +139,67 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
 
             <Grid item xs={12} md={8}>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={2}>
-                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ borderRadius: '100px', padding: `2rem 0` }}>
+                <Grid item xs={12} md={12}>
+                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ borderRadius: '100px', padding: `1rem 0` }}>
+                    <img src="/images/icon/accent/accentIco1.svg" alt="" />
+                    <img src="/images/icon/accent/accentIco2.svg" alt="" />
                     <Typography
                       onMouseEnter={(e) => textToSpeech(e, true)}
                       sx={!downMd && {
-                        textOrientation: 'sideways',
-                        writingMode: 'vertical-lr',
                         textTransform: 'uppercase',
-                        fontSize:`15pt`,
+                        fontSize: `15pt`,
                       }}
                       color={`white`}
-                      >
+                    >
                       <b>Tentang Surabaya</b>
                     </Typography>
                   </BoxStyled>
                 </Grid>
 
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={12}>
                   <BoxStyled2 height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0, 0, 0, 0)`, padding: `2rem` }}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                      <img src="/images/icon/accent/accentIco1.svg" alt="" />
-                      <img src="/images/icon/accent/accentIco2.svg" alt="" />
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <Typography1 onMouseEnter={(e) => textToSpeech(e, true)} style={{ fontSize: `16px` }}>
+                          Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian dari Provinsi Jawa Timur. Kota ini terbagi menjadi 31 kecamatan dan 154 kelurahan. Kota ini, yang dikenal dengan nilai kepahlawanan, memiliki sejarah panjang yang terkait dengan peristiwa heroik seperti peristiwa pertempuran 10 November 1945. Sebagai pelabuhan penting sejak zaman Majapahit hingga masa kolonial Belanda, Surabaya terus memainkan peran vital dalam perdagangan dan sejarah Indonesia.
+                        </Typography1>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                      <Typography1 onMouseEnter={(e) => textToSpeech(e, true)} style={{ fontSize: `16px` }}>
-                        Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian dari Provinsi Jawa Timur. Kota ini terbagi menjadi 31 kecamatan dan 154 kelurahan. Kota ini, yang dikenal dengan nilai kepahlawanan, memiliki sejarah panjang yang terkait dengan peristiwa heroik seperti peristiwa pertempuran 10 November 1945. Sebagai pelabuhan penting sejak zaman Majapahit hingga masa kolonial Belanda, Surabaya terus memainkan peran vital dalam perdagangan dan sejarah Indonesia.
-                      </Typography1>
-                    </Grid>
-                  </Grid>
-                </BoxStyled2>
+                  </BoxStyled2>
+                </Grid>
+
+                <Grid item xs={12} md={12}>
+                  <BoxStyled2 height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0, 0, 0, 0)`, borderRadius: `100px`, padding: `1rem 0` }}>
+                    <Typography1
+                      onMouseEnter={(e) => textToSpeech(e, true)}
+                      sx={!downMd && {
+                        textTransform: 'uppercase',
+                        fontSize: `15pt`,
+                      }}>
+                      <b>Ada Apa Di Surabaya</b>
+                    </Typography1>
+                  </BoxStyled2>
+                </Grid>
+
+                <Grid item xs={12} md={12}>
+                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{padding : downSm? `1rem` : downMd? 0 : `3rem 0`}}>
+                    {whatsInSurabaya.map((v, i) => (
+                      <Link key={i} href={v.url ? v.url : '#'} passHref>
+                        <CardActionArea component="a" target='_blank' sx={{ borderRadius: 4 }}>
+                          <CarouselItem
+                            src={`/images/icon/menu/${v.icon ? v.icon : `${_.snakeCase(v.title)}.svg`}`}
+                            text={v.title}
+                          />
+                        </CardActionArea>
+                      </Link>
+                    ))}
+                  </BoxStyled>
+                </Grid>
               </Grid>
+            </Grid >
 
-              <Grid item xs={12} md={10} sx={{ order: downMd ? 3 : 2 }}>
-                <BoxStyled height={downSm ? 'auto' : '100%'}>
-                  {whatsInSurabaya.map((v, i) => (
-                    <Link key={i} href={v.url ? v.url : '#'} passHref>
-                      {/* <Link key={i} href={/id/page/0/${v.id}/${_.kebabCase(v.title)}} passHref> */}
-                      <CardActionArea component="a" target='_blank' sx={{ borderRadius: 4 }}>
-                        <CarouselItem
-                          src={`/images/icon/menu/${v.icon ? v.icon : `${_.snakeCase(v.title)}.svg`}`}
-                          text={v.title}
-                        />
-                      </CardActionArea>
-                    </Link>
-                  ))}
-                </BoxStyled>
-              </Grid>
-
-              <Grid item xs={12} md={2} sx={{ order: downMd ? 2 : 3 }}>
-                <BoxStyled2 height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0, 0, 0, 0)`, borderRadius: `100px`, padding: `2rem 0` }}>
-                <Typography1
-                  onMouseEnter={(e) => textToSpeech(e, true)}
-                  sx={!downMd && {
-                    textOrientation: 'sideways',
-                    writingMode: 'vertical-lr',
-                    textTransform: 'uppercase',
-                    fontSize:`15pt`,
-                  }}>
-                  <b>Ada Apa Di Surabaya</b>
-                </Typography1>
-              </BoxStyled2>
-            </Grid>
-
-          </Grid>
-        </Grid >
-
-      </Grid >
-    </>
+          </Grid >
+        </>
       </Layout >
     </BoxCard >
     // </Box>
