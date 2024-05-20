@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import {
   Typography,
 } from '@mui/material';
-import { fontSize } from 'styles/theme';
+import { fontSize, hijauRamadhan } from 'styles/theme';
 import { AccessibilityContext } from 'contexts/accessibility';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import useTextToSpeech from 'hooks/useTextToSpeech';
@@ -34,8 +34,8 @@ const CarouselItem: React.FunctionComponent<Props> = ({
       justifyContent:`center`,
       alignItems:`center`,
       textAlign:`center`,
-      borderLeft:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid white`,
-      borderRight:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid white`,
+      borderLeft:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid #003f5a`,
+      borderRight:`${text === `Bisnis dan Investasi` ? `1px` : `0px`} solid #003f5a`,
       }}>
       
       <img src={src} style={{
@@ -49,7 +49,7 @@ const CarouselItem: React.FunctionComponent<Props> = ({
           style={{
             fontSize:downSm?`10pt`:(fontSize + 2) + accessibility.fontSize  
           }}
-          color={`white`}
+          color={hijauRamadhan}
         >
           {text}
         </Typography>

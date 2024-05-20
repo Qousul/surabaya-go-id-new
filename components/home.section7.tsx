@@ -46,14 +46,16 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 }));
 
 const TypographyStyled = styled(Typography)(({ theme }) => ({
-  color: `#121212`,
+  color: theme.palette.mode === 'dark'? "ffffff" : theme.palette.primary.main,
   fontSize: theme.breakpoints.values.md ? fontSize + 50 : fontSize + 80,
+  fontFamily: 'serif',
+  fontStyle : `italic`,
   margin: `0 1.5rem`,
   marginTop: `1.5rem`,
   textAlign: `center`,
   display: `flex`,
   alignItems: `center`,
-  fontWeight: 625,
+  // fontWeight: 625,
 }));
 
 const CardStyled = styled(Box)(({ theme }) => ({

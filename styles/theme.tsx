@@ -12,7 +12,10 @@ const theme = createTheme();
 // const lightColor1 = '#004ae1';
 // export const yellowColor = '#fdd300';
 
-export const hijauRamadhan = '#006462';
+// export const hijauRamadhan = '#006462';
+// export const coklatKece = '#D2B690';
+
+export const hijauRamadhan = '#003f5a';
 export const coklatKece = '#D2B690';
 
 export const iconSurabaya = (sizeIcon: number) => ({
@@ -56,7 +59,7 @@ const getDesign = (mode: PaletteMode, negative: boolean) => ({
       },
     } : {
       primary: {
-        main: negative ? '#3b3d4d' : hijauRamadhan,
+        main: negative ? '#3b3d4d' : '#20576F',
       },
       secondary: {
         main: negative ? '#191725' : coklatKece,

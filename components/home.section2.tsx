@@ -23,7 +23,7 @@ import Layout from "components/layout";
 interface Props { }
 
 const BoxStyled = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.mode == 'dark' ? theme.palette.primary.main : theme.palette.primary.main,
   display: "flex",
   borderRadius: "50px",
   justifyContent: "center",
@@ -44,7 +44,7 @@ const BoxStyled2 = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   display: "flex",
   borderRadius: "50px",
-  border: theme.palette.mode == 'dark' ? `1px solid ${theme.palette.common.white}` : `1px solid ${hijauRamadhan}`,
+  border: theme.palette.mode == 'dark' ? `1px solid ${theme.palette.primary.main}` : `1px solid ${hijauRamadhan}`,
   justifyContent: "center",
   alignItems: "center",
   padding: theme.spacing(2),
@@ -127,7 +127,6 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
         <>
           <Grid container spacing={2} alignItems="stretch" overflow={downSm ? 'hidden' : 'visible'}>
 
-
             <Grid item md={4} xs={12}>
               <BoxStyled height={downMd ? '10rem' : '100%'} sx={{
                 backgroundImage: `url("/images/photos/balaiKotaMalam.png")`,
@@ -140,13 +139,11 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
             <Grid item xs={12} md={8}>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={12}>
-                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ borderRadius: '100px', padding: `1rem 0` }}>
-                    <img src="/images/icon/accent/accentIco1.svg" alt="" />
-                    <img src="/images/icon/accent/accentIco2.svg" alt="" />
+                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ borderRadius: '100px', padding: `1rem 0`,}}>
                     <Typography
                       onMouseEnter={(e) => textToSpeech(e, true)}
                       sx={!downMd && {
-                        textTransform: 'uppercase',
+                        textTransform: 'uppercase', 
                         fontSize: `15pt`,
                       }}
                       color={`white`}
@@ -169,20 +166,22 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <BoxStyled2 height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0, 0, 0, 0)`, borderRadius: `100px`, padding: `1rem 0` }}>
-                    <Typography1
+                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{ borderRadius: '100px', padding: `1rem 0` }}>
+                    <Typography
                       onMouseEnter={(e) => textToSpeech(e, true)}
                       sx={!downMd && {
                         textTransform: 'uppercase',
                         fontSize: `15pt`,
-                      }}>
-                      <b>Ada Apa Di Surabaya</b>
-                    </Typography1>
-                  </BoxStyled2>
+                      }}
+                      color={`white`}
+                    >
+                      <b>Ada apa di surabaya</b>
+                    </Typography>
+                  </BoxStyled>
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <BoxStyled height={downSm ? 'auto' : '100%'} sx={{padding : downSm? `1rem` : downMd? 0 : `3rem 0`}}>
+                  <BoxStyled2 height={downSm ? 'auto' : '100%'} sx={{ backgroundColor: `rgba(0, 0, 0, 0)`, padding: downMd? `0.5rem` : `2rem` }}>
                     {whatsInSurabaya.map((v, i) => (
                       <Link key={i} href={v.url ? v.url : '#'} passHref>
                         <CardActionArea component="a" target='_blank' sx={{ borderRadius: 4 }}>
@@ -193,7 +192,7 @@ const HomeSection2: React.FunctionComponent<Props> = () => {
                         </CardActionArea>
                       </Link>
                     ))}
-                  </BoxStyled>
+                  </BoxStyled2>
                 </Grid>
               </Grid>
             </Grid >

@@ -233,8 +233,9 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
             </Box>
             <Typography
               textAlign="center"
+              fontStyle="italic"
               fontSize={downSm ? 24 - 1 : 24}
-              fontWeight={500}
+              // fontWeight={500}
               lineHeight={1.5}
               color={`#ffffff`}
             >
