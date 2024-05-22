@@ -12,7 +12,7 @@ const theme = createTheme();
 // const lightColor1 = '#004ae1';
 // export const yellowColor = '#fdd300';
 
-export const hijauRamadhan = '#006462';
+export const hijauRamadhan = '#003f5a';
 export const coklatKece = '#D2B690';
 
 export const iconSurabaya = (sizeIcon: number) => ({
