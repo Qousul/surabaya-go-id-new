@@ -99,12 +99,12 @@ const Title: React.FunctionComponent<Props> = ({
             onClick={onBack}
           />
         }
-        <img src={iconJudul} style={{marginRight:'0.7rem', maxHeight:'25px'}}/>
-        <img src={iconJudul2} style={{marginRight:'0.7rem', maxHeight:'25px'}}/>
+        <img src={iconJudul} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+        <img src={iconJudul2} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}
           sx={{
-            color: withBackground ? mode == 'dark' ? 'background.paper' : 'text.primary' : colortext,
+            color: withBackground ? mode == 'dark' ? 'primary.main' : 'text.primary' : colortext,
             fontSize: {
               xs: (fontSize + 2) + accessibility.fontSize,
               sm: (fontSize + 4) + accessibility.fontSize,
@@ -141,7 +141,9 @@ const Title: React.FunctionComponent<Props> = ({
           >
             <ViewIcon />
           </Box>
+          <Box sx={{color:`#003f5a`}}>
           {buttonText}
+          </Box>
         </ButtonStyled>
       }
     </BoxStyled>

@@ -47,12 +47,13 @@ const CarouselContentLP: React.FunctionComponent<Props> = ({
   const slider = React.useRef<Slider>(null);
   const sliderThumb = React.useRef<Slider>(null);
   const { downLg } = React.useContext(BreakpointsContext);
+  const { downSm } = React.useContext(BreakpointsContext);
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     arrows: false,
-    centerMode: true,
+    centerMode: downSm? false : true,
     slidesToShow,
     slidesToScroll: 1,
     autoplay: true,

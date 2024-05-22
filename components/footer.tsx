@@ -241,7 +241,10 @@ const Footer: React.FunctionComponent<Props> = ({ load }: Props) => {
           <Grid item xs={12} md={4}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Box>
+                <Box sx={{
+                  display : `flex`,
+                  justifyContent : `center`
+                }}>
                   <Search isFooter={true} />
                 </Box>
               </Grid>

@@ -46,14 +46,16 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 }));
 
 const TypographyStyled = styled(Typography)(({ theme }) => ({
-  color: `#121212`,
+  color: theme.palette.mode === 'dark'? "ffffff" : theme.palette.primary.main,
   fontSize: theme.breakpoints.values.md ? fontSize + 50 : fontSize + 80,
+  fontFamily: 'serif',
+  fontStyle : `italic`,
   margin: `0 1.5rem`,
   marginTop: `1.5rem`,
   textAlign: `center`,
   display: `flex`,
   alignItems: `center`,
-  fontWeight: 625,
+  // fontWeight: 625,
 }));
 
 const CardStyled = styled(Box)(({ theme }) => ({
@@ -96,9 +98,9 @@ const CardBack = styled(Box)(({ theme }) => ({
   width: `100%`,
   height: `100%`,
   backfaceVisibility: `hidden`,
-  backgroundColor: hijauRamadhan,
+  backgroundColor: theme.palette.mode === `light`? hijauRamadhan : `#20576F`,
   color: `#fff`,
-  border: `10px solid ${hijauRamadhan}`,
+  border: `10px solid ${theme.palette.mode === `light`? hijauRamadhan : `#20576F`}`,
   borderRadius: `15px`,
   justifyContent: `center`,
   fontSize: `24px`,
