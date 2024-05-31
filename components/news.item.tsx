@@ -37,6 +37,7 @@ interface Props {
   withPlay?: boolean;
   sizePlay?: number;
   route: string;
+  textWhite?: boolean;
 }
 
 export const fontSizeDateInit = fontSizeDef - 2;
@@ -101,6 +102,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
   withPlay,
   sizePlay,
   route,
+  textWhite,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
@@ -124,7 +126,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
           data.name ? _.kebabCase(data.name) : "test-post"
         }`}
       >
-        <a>
+        <a style={{border : withIconSurabaya && `1px solid ${hijauRamadhan}`}}>
           <Grid container spacing={gridSpacing}>
             <Grid item sm={gridImage}>
               <Box
@@ -210,6 +212,9 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     marginBottom={marginTop}
                     className="title"
                     onMouseEnter={() => textToSpeech(data.title, false)}
+                    sx={{
+                      color : textWhite && `white`
+                    }}
                   >
                     {truncateText(data.title, truncateTitle)}
                   </Typography1Styled>

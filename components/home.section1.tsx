@@ -238,7 +238,6 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
               fontSize={downSm ? 24 - 1 : 24}
               // fontWeight={500}
               lineHeight={1.5}
-              fontStyle="italic"
               color={`#ffffff`}
             >
               {`Gotong royong menuju kota dunia yang maju,`}
@@ -260,7 +259,6 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
                 <StackedCard
                   key={index}
                   // sx={{ width: 200, height: 300, m: -2 }}
-                  key={index}
                   index={index}
                   sx={{
                     marginInline: margin,

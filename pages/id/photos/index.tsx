@@ -18,11 +18,12 @@ import { BoxStyled } from 'pages/id/videos/index';
 import { borderRadius } from 'styles/theme';
 import { fontSizeTitle } from 'components/news.list';
 import { NewsType } from 'components/home.section3';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
+import batik from 'public/images/batik.png'
 
 interface Props {};
 
@@ -147,10 +148,17 @@ const Photos: NextPage<Props> = () => {
         <title>Pemerintah Kota Surabaya</title>
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
-      <BoxStyled overflow="hidden">
+      <BoxStyled overflow="hidden" style={{
+        paddingTop:`7rem`,
+        backgroundImage: `url(${batik})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+        backgroundPosition: "center",
+        backgroundBlendMode: "screen",
+      }}>
         <Layout paddingY={2}>
           <BoxStyledElement className={accessibility.css.negative ? 'negative' : ''}>
-            <Box className="wrapper-svg-section4">
+            {/* <Box className="wrapper-svg-section4">
               <Element4 />
             </Box>
             <Box className="wrapper-svg-section3">
@@ -158,14 +166,15 @@ const Photos: NextPage<Props> = () => {
             </Box>
             <Box className="wrapper-svg-section1">
               <Element1 />
-            </Box>
-            <Title text="Foto" />
+            </Box> */}
+            <Title text="Foto" roundedBg={true}/>
             {!loading && current == 1 &&
               <BoxCarouselStyled>
                 <CarouselContent2
                   data={photos.slice(0, 6)}
                   slidesToShow={downSm ? 1 : 2}
                   route="photos"
+                  textWhite={true}
                 />
               </BoxCarouselStyled>
             }

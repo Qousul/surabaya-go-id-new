@@ -17,6 +17,7 @@ interface Props {
   data: NewsType[];
   slidesToShow?: number;
   route?: string;
+  textWhite?:boolean;
 };
 
 const BoxStyled = styled(Box)(({ theme }) => ({
@@ -119,6 +120,7 @@ const CarouselContent2: React.FunctionComponent<Props> = ({
   data,
   slidesToShow,
   route,
+  textWhite,
 }: Props) => {
   const slider = React.useRef<Slider>(null);
   const { downSm, downLg } = React.useContext(BreakpointsContext);
@@ -161,6 +163,7 @@ const CarouselContent2: React.FunctionComponent<Props> = ({
               gridContent={12}
               withDescription={false}
               route={route}
+              textWhite={textWhite}
             />
           ))}
         </Slider>
