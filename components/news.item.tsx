@@ -38,6 +38,7 @@ interface Props {
   sizePlay?: number;
   route: string;
   textWhite?: boolean;
+  isLandingPage?: boolean;
 }
 
 export const fontSizeDateInit = fontSizeDef - 2;
@@ -46,7 +47,6 @@ const sizeIcon = 26;
 const BoxStyled = styled(Box)(({ theme }) => ({
   height: "100%",
   borderRadius: "20px",
-  padding: "15px",
   backgroundColor:
     theme.palette.mode === "dark"
       ? theme.palette.grey.A100
@@ -103,6 +103,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
   sizePlay,
   route,
   textWhite,
+  isLandingPage,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
@@ -120,13 +121,13 @@ const NewsItem: React.FunctionComponent<Props> = ({
     [route]
   );
   return (
-    <BoxStyled>
+    <BoxStyled sx={{padding: isLandingPage? "15px" : "0px",}}>
       <Link
         href={`/id/${route}/${data.id ? data.id : "0"}/${
           data.name ? _.kebabCase(data.name) : "test-post"
         }`}
       >
-        <a style={{border : withIconSurabaya && `1px solid ${hijauRamadhan}`}}>
+        <a style={{border : withIconSurabaya && !isLandingPage && `1px solid ${hijauRamadhan}`}}>
           <Grid container spacing={gridSpacing}>
             <Grid item sm={gridImage}>
               <Box
@@ -233,6 +234,9 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     marginTop={marginTop}
                     className="date"
                     onMouseEnter={(e) => textToSpeech(e, true)}
+                    sx={{
+                      color : textWhite && `white`
+                    }}
                   >
                     {`${whatDayId(
                       new Date(data.created_at)
@@ -260,6 +264,7 @@ NewsItem.defaultProps = {
   withIconSurabaya: false,
   withPlay: false,
   sizePlay: 50,
+  isLandingPage: false,
 };
 
 export default memo(NewsItem);

@@ -94,6 +94,7 @@ const CarouselContentLPVideo: React.FunctionComponent<Props> = ({
             <NewsItem
               key={i}
               data={v}
+              isLandingPage={true}
 
               gridSpacing={gridSpacing}
               gridImage={gridImage}
@@ -128,6 +129,7 @@ const CarouselContentLPVideo: React.FunctionComponent<Props> = ({
               <NewsItem
                 key={i}
                 data={v}
+                isLandingPage={true}
                 gridSpacing={defGridSpacing}
                 truncateTitle={defTruncateTitle}
                 fontSizeTitle={defFontSizeProps}

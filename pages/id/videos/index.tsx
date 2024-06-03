@@ -16,9 +16,9 @@ import NewsItem from 'components/news.item';
 import { NewsType } from 'components/home.section3';
 import { fontSizeBigger, fontSizeTitle } from 'components/news.list';
 import { borderRadius, boxShadow } from 'styles/theme';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
 
@@ -34,6 +34,7 @@ export const sizePlay = 100;
 
 export const BoxStyled = styled(Box)(({ theme }) => ({
   position: 'relative',
+  paddingTop: '7rem',
   '& .grid-content': {
     '& a': {
       display: 'block',
@@ -272,20 +273,8 @@ const Videos: NextPage<Props> = () => {
       >
         <Layout paddingY={2}>
           <>
-            <Box className="wrapper-svg-element1">
-              <Element1 />
-            </Box>
-            <Box className="wrapper-svg-element4">
-              <Element4 />
-            </Box>
-            <Title text="Video" />
+            <Title text="Video" roundedBg={true}/>
             <Box position="relative">
-              <Box className="wrapper-svg-element3a">
-                <Element3 />
-              </Box>
-              <Box className="wrapper-svg-element3b">
-                <Element3 />
-              </Box>
               <Grid container spacing={4}>
                 {loading ? (
                   <>
@@ -337,6 +326,7 @@ const Videos: NextPage<Props> = () => {
                             withPlay={true}
                             sizePlay={isFirst && !downSm ? sizePlay : 50}
                             route="videos"
+                            textWhite={isFirst? true : false}
                           />
                         </Grid>
                       );

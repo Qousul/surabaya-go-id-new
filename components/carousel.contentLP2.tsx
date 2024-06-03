@@ -106,6 +106,7 @@ const CarouselContentLP2: React.FunctionComponent<Props> = ({
             <NewsItem
                 key={i}
                 data={v}
+                isLandingPage={true}
                 gridSpacing={defGridSpacing}
                 truncateTitle={defTruncateTitle}
                 fontSizeTitle={defFontSizeProps}

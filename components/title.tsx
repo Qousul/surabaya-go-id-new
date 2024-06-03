@@ -104,8 +104,12 @@ const Title: React.FunctionComponent<Props> = ({
           />
         }
 
-        <img src={iconJudul} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
-        <img src={iconJudul2} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+        { (iconJudul || iconJudul2) &&
+          <>
+            <img src={iconJudul} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+            <img src={iconJudul2} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+          </>
+        }
         
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}

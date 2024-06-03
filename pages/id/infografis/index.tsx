@@ -16,9 +16,9 @@ import NewsItem from 'components/news.item';
 import { BoxStyled } from 'pages/id/videos/index';
 import { NewsType } from 'components/home.section3';
 import { fontSizeTitle } from 'components/news.list';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { AccessibilityContext } from 'contexts/accessibility';
 
 export interface PodcastType {
@@ -76,20 +76,20 @@ const Infografis: NextPage<Props> = () => {
       >
         <Layout paddingY={2}>
           <>
-            <Box className="wrapper-svg-element1 infografis">
+            {/* <Box className="wrapper-svg-element1 infografis">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-element4 infografis">
               <Element4 />
-            </Box>
-            <Title text="Infografis" />
+            </Box> */}
+            <Title text="Infografis" roundedBg={true}/>
             <Box position="relative">
-              <Box className="wrapper-svg-element3a">
+              {/* <Box className="wrapper-svg-element3a">
                 <Element3 />
               </Box>
               <Box className="wrapper-svg-element3b">
                 <Element3 />
-              </Box>
+              </Box> */}
               <MediaHeader
                 text="Infografis mengenai Kota Surabaya"
                 description="Pemerintah Kota Surabaya"
