@@ -103,8 +103,9 @@ const Podcasts: NextPage<Props> = () => {
       <BoxStyled
         overflow="hidden"
         className={accessibility.css.negative ? 'negative' : ''}
+        style={{paddingTop: '7rem',}}
       >
-        <Layout paddingY={15}>
+        <Layout paddingY={2}>
           <>
             {/* <Box className="wrapper-svg-section1">
               <Element4 />

@@ -73,6 +73,7 @@ const Infografis: NextPage<Props> = () => {
       <BoxStyled
         overflow="hidden"
         className={accessibility.css.negative ? 'negative' : ''}
+        style={{paddingTop: '7rem',}}
       >
         <Layout paddingY={2}>
           <>

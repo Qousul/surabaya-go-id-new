@@ -34,7 +34,6 @@ export const sizePlay = 100;
 
 export const BoxStyled = styled(Box)(({ theme }) => ({
   position: 'relative',
-  paddingTop: '7rem',
   '& .grid-content': {
     '& a': {
       display: 'block',
@@ -270,6 +269,7 @@ const Videos: NextPage<Props> = () => {
       <BoxStyled
         overflow="hidden"
         className={accessibility.css.negative ? 'negative' : ''}
+        style={{paddingTop: '7rem',}}
       >
         <Layout paddingY={2}>
           <>

@@ -24,7 +24,7 @@ const Pages: NextPage<Props> = ({ detail }: Props) => {
         <title>Pemerintah Kota Surabaya</title>
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
-      <Layout paddingY={0}>
+      <Layout paddingY={15}>
         <PagesTitle text={detail.title} />
       </Layout>
       <Layout paddingY={0} maxWidth="md">

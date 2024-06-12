@@ -23,7 +23,6 @@ import { NewsType } from 'components/home.section3';
 // import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
-import batik from 'public/images/batik.png'
 
 interface Props {};
 
@@ -150,11 +149,11 @@ const Photos: NextPage<Props> = () => {
       </Head>
       <BoxStyled overflow="hidden" style={{
         paddingTop:`7rem`,
-        backgroundImage: `url(${batik})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "repeat",
-        backgroundPosition: "center",
-        backgroundBlendMode: "screen",
+        backgroundImage: `url('/images/batik.png')`,
+        backgroundSize: 'contain',
+        backgroundBlendMode: 'screen',
+        
+        
       }}>
         <Layout paddingY={2}>
           <BoxStyledElement className={accessibility.css.negative ? 'negative' : ''}>

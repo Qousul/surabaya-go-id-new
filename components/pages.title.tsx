@@ -5,9 +5,10 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { fontSize } from 'styles/theme';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element4 from 'public/images/icon/element_4.svg';
-import { BreakpointsContext } from 'contexts/breakpoints';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
+// import { BreakpointsContext } from 'contexts/breakpoints';
+
 
 interface Props {
   text: string;
@@ -20,7 +21,11 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-  backgroundColor: theme.palette.primary.main,
+  background: theme.palette.primary.main,
+  backgroundImage: `url('/images/pageHeader.png')`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundBlendMode: `screen`,
   margin: theme.spacing(12, 0, 0),
   padding: theme.spacing(5),
   borderRadius: theme.spacing(2),
@@ -90,10 +95,10 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 const PagesTitle: React.FunctionComponent<Props> = ({
   text,
 }: Props) => {  
-  const { downSm } = React.useContext(BreakpointsContext);
+  // const { downSm } = React.useContext(BreakpointsContext);
   return (
     <BoxStyled>
-      {!downSm &&
+      {/* {!downSm &&
         <>
           <Box className="wrapper-svg1">
             <Element1 />
@@ -102,7 +107,7 @@ const PagesTitle: React.FunctionComponent<Props> = ({
             <Element4 />
           </Box>
         </>
-      }
+      } */}
       <Typography data-text={text}>
         {text}
       </Typography>
