@@ -21,9 +21,9 @@ import { fontSizeTitle } from 'components/news.list';
 import NewsItem from 'components/news.item';
 import { BoxStyled as BoxNewsStyled } from 'pages/id/videos/index';
 // import Link from 'next/link';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { ColorModeContext } from 'contexts/colorMode';
 import { AccessibilityContext } from 'contexts/accessibility';
@@ -181,9 +181,9 @@ const InfografisDetail: NextPage<Props> = ({ detail }: Props) => {
         overflow="hidden"
         className={accessibility.css.negative ? 'negative' : ''}
       >
-        <Layout paddingY={2}>
+        <Layout paddingY={20}>
           <>
-            <Box className="wrapper-svg-element1">
+            {/* <Box className="wrapper-svg-element1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-element3">
@@ -191,7 +191,7 @@ const InfografisDetail: NextPage<Props> = ({ detail }: Props) => {
             </Box>
             <Box className="wrapper-svg-element4">
               <Element4 />
-            </Box>
+            </Box> */}
             <Title text="Infografis" paddingY={3} onBack={() => router.push(`/id/infografis`)} />
             <Box className="container-text">
               <Typography

@@ -6,9 +6,9 @@ import {
 import { styled } from '@mui/material/styles';
 import { NewsType } from 'components/home.section3';
 import PodcastItem from 'components/media.podcast.item';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 
 interface Props {
@@ -55,7 +55,7 @@ const MediaPodcastList: React.FunctionComponent<Props> = ({
   const { downSm } = React.useContext(BreakpointsContext);
   return (
     <BoxStyled>
-      <Box className="wrapper-svg-section4">
+      {/* <Box className="wrapper-svg-section4">
         <Element1 />
       </Box>
       <Box className="wrapper-svg-section3">
@@ -63,13 +63,15 @@ const MediaPodcastList: React.FunctionComponent<Props> = ({
       </Box>
       <Box className="wrapper-svg-section5">
         <Element4 />
-      </Box>
+      </Box> */}
       <Grid container spacing={3} alignItems="stretch" position="relative" zIndex={1}>
         {data.map((v, i) => (
-          <Grid key={i} item xs={12} sm={i == 0 && !downSm ? 8 : 4}>
+          // <Grid key={i} item xs={12} sm={i == 0 && !downSm ? 8 : 4}>
+          <Grid key={i} item xs={12} sm={4}>
             <PodcastItem
               data={v}
-              isVertical={i == 0 && !downSm ? false : true}
+              // isVertical={i == 0 && !downSm ? false : true}
+              isVertical={true}
             />
           </Grid>
         ))}

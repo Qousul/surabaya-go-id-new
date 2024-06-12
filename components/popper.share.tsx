@@ -21,7 +21,7 @@ interface Props {
   title: string;
 };
 
-const sizeShare = 20;
+const sizeShare = 25;
 const heightButton = 30;
 
 const BoxStyledShare = styled(Box)(({ theme }) => ({

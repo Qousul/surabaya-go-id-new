@@ -125,13 +125,13 @@ export const GridStyled = styled(Grid)(({ theme }) => ({
 
 const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
   console.log('detail', detail);
-  
+
   const router = useRouter();
   const { downSm } = React.useContext(BreakpointsContext);
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
-  const [ others, setOthers ] = React.useState<NewsType[]>([]);
-  const [ loading, setLoading ] = React.useState(true);
+  const [others, setOthers] = React.useState<NewsType[]>([]);
+  const [loading, setLoading] = React.useState(true);
   const contentStriptags = React.useMemo(() => {
     const opts = {
       ignoreTags: ['video', 'source', 'iframe'],
@@ -142,7 +142,7 @@ const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
     const text1 = replaceAllInserter(results.result, `poster="`, `poster="https://webdisplay.surabaya.go.id`);
     const text2 = replaceAllInserter(text1, `source src="`, `source src="https://webdisplay.surabaya.go.id`);
     return text2;
-  }, [detail]); 
+  }, [detail]);
   const getData = async () => {
     setLoading(true);
     const fetchData = await fetch(`/api/data/webdisplay?page=1&target=videos`, { method: 'GET' });
@@ -167,23 +167,27 @@ const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
       <BoxStyled overflow="hidden">
-        <Layout paddingY={2}>
+        <Layout paddingY={20}>
           <>
+            {/* 
             <Box className="wrapper-svg-element1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-element3">
               <Element3 />
             </Box>
-            {/* <Box className="wrapper-svg-element4">
+            <Box className="wrapper-svg-element4">
               <Element4 />
             </Box> */}
-            <Title text="Video" paddingY={3} onBack={() => router.push(`/id/videos`)} />
+            <Title text="Video" paddingY={2} onBack={() => router.push(`/id/videos`)} />
             <Grid container spacing={4}>
               <Grid item sm={9}>
                 {/* <Box marginBottom={4}>
                   <ProgressPlayerVideo url={`bantuan_low.mp4`} />
                 </Box> */}
+                <BoxTextStyled onMouseEnter={() => textToSpeech(truncateText(contentStriptags, 0), false)}>
+                  <Article text={contentStriptags} paddingY={2} />
+                </BoxTextStyled>
                 <Box className="inner" display="flex" alignItems="flex-start" marginBottom={3}>
                   <Box>
                     <Box className="icon-surabaya">
@@ -213,9 +217,6 @@ const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
                     <MediaDate title={detail.title} date={detail.created_at} others={timeAgo.format(new Date(detail.created_at)) as string} justifyContent="flex-start" />
                   </Box>
                 </Box>
-                <BoxTextStyled onMouseEnter={() => textToSpeech(truncateText(contentStriptags, 0), false)}>
-                  <Article text={contentStriptags} paddingY={2} />
-                </BoxTextStyled>
               </Grid>
               <Grid item sm={3}>
                 {!loading && others && others.length > 3 && others.slice(0, 3).map((v, i) => (
@@ -246,7 +247,7 @@ const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
                       sizePlay={50}
                       route="videos"
                     />
-                  </GridStyled>        
+                  </GridStyled>
                 ))}
               </Grid>
             </Grid>
@@ -260,7 +261,7 @@ const VideosDetail: NextPage<Props> = ({ detail }: Props) => {
 export const getServerSideProps = async ({ query }) => {
   const { id } = query;
   const detail = await getDetail(parseInt(id as string), 'video');
-  
+
   return {
     props: {
       detail,

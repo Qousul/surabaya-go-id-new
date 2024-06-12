@@ -123,6 +123,7 @@ const HomeSection5: React.FunctionComponent<Props> = ({ data }: Props) => {
                         sx={{
                           margin: `30px 10px`,
                           maxWidth: !downSm ? `200px` : `100px`,
+                          cursor: 'pointer',
                         }}
                       >
                         <Grid

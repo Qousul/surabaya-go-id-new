@@ -24,13 +24,13 @@ import { BoxStyled, GridStyled } from 'pages/id/videos/[id]/[slug]';
 import { defFontSizeDate } from 'components/carousel.content';
 import Article from 'components/article';
 import SurabayaIcon from 'public/images/icon/mobile/surabaya.svg';
-import Element1 from 'public/images/icon/element_1.svg';
-import Element3 from 'public/images/icon/element_3.svg';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element1 from 'public/images/icon/element_1.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { AccessibilityContext } from 'contexts/accessibility';
 import { getDetail } from 'utils/services/webdisplay';
-import { fontSize, yellowColor } from 'styles/theme';
+import { fontSize, coklatKece } from 'styles/theme';
 import useTextToSpeech from 'hooks/useTextToSpeech';
 
 TimeAgo.addLocale(id);
@@ -95,9 +95,9 @@ const PhotosDetail: NextPage<Props> = ({ detail }: Props) => {
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
       <BoxStyled overflow="hidden">
-        <Layout paddingY={2}>
+        <Layout paddingY={20}>
           <>
-            <Box className="wrapper-svg-element1">
+            {/* <Box className="wrapper-svg-element1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-element3">
@@ -107,13 +107,13 @@ const PhotosDetail: NextPage<Props> = ({ detail }: Props) => {
               className="wrapper-svg-element4"
               sx={accessibility.css.negative && {
                 '& path': {
-                  stroke: yellowColor,
+                  stroke: coklatKece,
                 },
               }}
             >
               <Element4 />
-            </Box>
-            <Title text="Foto" paddingY={3} onBack={() => router.push(`/id/photos`)} />
+            </Box> */}
+            <Title text="Foto" paddingY={3} onBack={() => router.push(`/id/photos`)}/>
             <Grid container spacing={4}>
               <Grid item xs={12} sm={9}>
                 {dataImg.length > 0 &&

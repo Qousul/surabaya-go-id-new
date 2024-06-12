@@ -5,7 +5,7 @@ import {
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { fontSize } from 'styles/theme';
+import { fontSize, hijauRamadhan } from 'styles/theme';
 import { StyledBox as StyledBoxArrow } from 'styles/carousel';
 import { Arrow } from 'components/carousel.small';
 import ViewIcon from 'public/images/icon/view_all.svg';
@@ -24,6 +24,7 @@ interface Props {
   paddingX?: number;
   withBackground?: boolean;
   justifyContent?: string;
+  roundedBg?: boolean;
   onBack?: () => any;
   onClick?: () => any;
 };
@@ -69,6 +70,7 @@ const Title: React.FunctionComponent<Props> = ({
   withBackground,
   justifyContent,
   colortext,
+  roundedBg,
   onBack,
   onClick,
 }: Props) => {
@@ -82,6 +84,7 @@ const Title: React.FunctionComponent<Props> = ({
       paddingY={paddingY}
       paddingX={paddingX}
       sx={{
+        // backgroundColor: withBackground ? 'secondary.main' : 'transparent',
         backgroundColor: withBackground ? 'secondary.main' : 'transparent',
         borderRadius: withBackground ? 2 : 0,
         justifyContent,
@@ -92,6 +95,7 @@ const Title: React.FunctionComponent<Props> = ({
         alignItems="center"
         className="back-button"
       >
+
         {onBack &&
           <Arrow
             size={(fontSize + 25).toString()}
@@ -99,21 +103,31 @@ const Title: React.FunctionComponent<Props> = ({
             onClick={onBack}
           />
         }
-        <img src={iconJudul} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
-        <img src={iconJudul2} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+
+        { (iconJudul || iconJudul2) &&
+          <>
+            <img src={iconJudul} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+            <img src={iconJudul2} style={{ marginRight: '0.7rem', maxHeight: '25px' }} />
+          </>
+        }
+        
         <Typography
           onMouseEnter={(e) => textToSpeech(e, true)}
           sx={{
-            color: withBackground ? mode == 'dark' ? 'primary.main' : 'text.primary' : colortext,
+            color: roundedBg? `white` : withBackground ? mode == 'dark' ? 'primary.main' : 'text.primary' : colortext,
             fontSize: {
               xs: (fontSize + 2) + accessibility.fontSize,
               sm: (fontSize + 4) + accessibility.fontSize,
             },
+            backgroundColor: roundedBg? hijauRamadhan : `transparent`,
+            padding: roundedBg? `0.5rem 1rem` : 0,
+            borderRadius: roundedBg? `100rem` : 0,
           }}
         >
           {text}
         </Typography>
       </StyledBoxArrow>
+
       {buttonText &&
         <ButtonStyled
           variant="contained"
@@ -146,6 +160,7 @@ const Title: React.FunctionComponent<Props> = ({
           </Box>
         </ButtonStyled>
       }
+
     </BoxStyled>
   );
 };

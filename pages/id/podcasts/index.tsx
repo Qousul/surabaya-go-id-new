@@ -16,7 +16,7 @@ import MediaHeader from 'components/media.header';
 import { NewsType } from 'components/home.section3';
 import MediaPodcastList from 'components/media.podcast.list';
 import Pagination from 'components/pagination';
-import Element4 from 'public/images/icon/element_4.svg';
+// import Element4 from 'public/images/icon/element_4.svg';
 import { AccessibilityContext } from 'contexts/accessibility';
 
 // const count = [{
@@ -103,13 +103,14 @@ const Podcasts: NextPage<Props> = () => {
       <BoxStyled
         overflow="hidden"
         className={accessibility.css.negative ? 'negative' : ''}
+        style={{paddingTop: '7rem',}}
       >
         <Layout paddingY={2}>
           <>
-            <Box className="wrapper-svg-section1">
+            {/* <Box className="wrapper-svg-section1">
               <Element4 />
-            </Box>
-            <Title text="Podcast" />
+            </Box> */}
+            <Title text="Podcast" roundedBg={true}/>
             <MediaHeader
               text="Dengarkan Informasi mengenai kota Surabaya"
               description="dengan narasumber yang terpercaya."

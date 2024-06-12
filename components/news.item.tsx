@@ -39,6 +39,8 @@ interface Props {
   route: string;
   isSmallCard?: boolean;
   padding?: number;
+  textWhite?: boolean;
+  isLandingPage?: boolean;
 }
 
 export const fontSizeDateInit = fontSizeDef - 2;
@@ -47,8 +49,7 @@ const sizeIcon = 26;
 const BoxStyled = styled(Box)(({ theme }) => ({
   height: "100%",
   borderRadius: "20px",
-  border: "solid 0.5px",
-  borderColor: coklatKece,
+  padding: "15px",
   backgroundColor:
     theme.palette.mode === "dark"
       ? theme.palette.grey.A100
@@ -109,8 +110,10 @@ const NewsItem: React.FunctionComponent<Props> = ({
   withPlay,
   sizePlay,
   route,
-  isSmallCard,
+  isSmallCard, 
   padding,
+  isLandingPage,
+  textWhite,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
@@ -130,7 +133,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
   return (
     <BoxStyled
     sx={{
-      padding : isSmallCard ? '15px' : padding,
+      padding : isSmallCard ? '15px' : isLandingPage? '15px' : padding,
     }}
     >
       <Link
@@ -138,7 +141,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
           data.name ? _.kebabCase(data.name) : "test-post"
         }`}
       >
-        <a>
+        <a style={{border : withIconSurabaya && !isLandingPage && `1px solid ${hijauRamadhan}`}}>
           <Grid container spacing={gridSpacing}>
             <Grid item sm={gridImage}>
               <Box
@@ -223,6 +226,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     sx={{
                       fontWeight: 800,
                       textTransform: "uppercase",
+                      color : textWhite && `white`
                     }}
                     fontSize={fontSizeTitle + accessibility.fontSize}
                     marginBottom={marginTop}
@@ -246,6 +250,9 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     marginTop={marginTop}
                     className="date"
                     onMouseEnter={(e) => textToSpeech(e, true)}
+                    sx={{
+                      color : textWhite && `white`
+                    }}
                   >
                     {`${whatDayId(
                       new Date(data.created_at)
@@ -275,6 +282,7 @@ NewsItem.defaultProps = {
   sizePlay: 50,
   isSmallCard: false,
   padding: 0,
+  isLandingPage: false,
 };
 
 export default memo(NewsItem);
