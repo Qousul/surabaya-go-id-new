@@ -83,16 +83,16 @@ const StackedCardMedia = styled(CardMedia)(({ theme }) => ({
 
 const StyledBox = styled(Box)(({ theme }) => ({
   minHeight: `120vh`,
-  // backgroundImage: `url(/images/bg-hero.png)`,
+  backgroundImage: `url(/images/bg-hero.png)`,
   backgroundPosition: `center`,
   backgroundSize: `cover`,
   backgroundRepeat: `repeat`,
   backgroundBlendMode: `screen`,
-  backgroundImage: `url("/images/photos/bg blur.png")`,
-  // backgroundColor:
-  //   theme.palette.mode == "dark"
-  //     ? theme.palette.background.paper
-  //     : theme.palette.primary.main,
+  // backgroundImage: `url("/images/photos/bg blur.png")`,
+  backgroundColor:
+    theme.palette.mode == "dark"
+      ? theme.palette.background.paper
+      : theme.palette.primary.main,
   display: "flex",
   alignItems: "center",
   position: "relative",
@@ -240,6 +240,7 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
               lineHeight={1.5}
               fontStyle="italic"
               color={`#ffffff`}
+              textTransform="uppercase"
             >
               {`Gotong royong menuju kota dunia yang maju,`}
               <br />

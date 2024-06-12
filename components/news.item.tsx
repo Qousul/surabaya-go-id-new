@@ -37,6 +37,8 @@ interface Props {
   withPlay?: boolean;
   sizePlay?: number;
   route: string;
+  isSmallCard?: boolean;
+  padding?: number;
 }
 
 export const fontSizeDateInit = fontSizeDef - 2;
@@ -45,14 +47,15 @@ const sizeIcon = 26;
 const BoxStyled = styled(Box)(({ theme }) => ({
   height: "100%",
   borderRadius: "20px",
-  padding: "15px",
+  border: "solid 0.5px",
+  borderColor: coklatKece,
   backgroundColor:
     theme.palette.mode === "dark"
       ? theme.palette.grey.A100
       : theme.palette.common.white, // Set background color to white
   "& a": {
     textDecoration: "none",
-    color: theme.palette.text.primary,
+    color: theme.palette.mode == 'dark' ? 'white' : hijauRamadhan,
     height: "100%",
     "& .content-img": {
       "& img": {
@@ -73,19 +76,24 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Typography1Styled = styled(Typography)(({ theme }) => ({
-  fontWeight: 800,
-  textTransform: "uppercase",
-  color:
-    theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
-}));
+// const Typography1Styled = styled(Typography)(({ theme }) => ({
+//   fontWeight: 800,
+//   textTransform: "uppercase",
+//   color:
+//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
+// }));
 
-const Typography2 = styled(Typography)(({ theme }) => ({
-  fontWeight: 500,
-  textTransform: "uppercase",
-  color:
-    theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
-}));
+// const Typography2 = styled(Typography)(({ theme }) => ({
+//   fontWeight: 500,
+//   textTransform: "uppercase",
+//   color:
+//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
+// }));
+
+// const TypographyDesc = styled(Typography)(({theme})=>({
+//   color:
+//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
+// }));
 
 const NewsItem: React.FunctionComponent<Props> = ({
   data,
@@ -101,6 +109,8 @@ const NewsItem: React.FunctionComponent<Props> = ({
   withPlay,
   sizePlay,
   route,
+  isSmallCard,
+  padding,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
   const { textToSpeech } = useTextToSpeech();
@@ -118,7 +128,11 @@ const NewsItem: React.FunctionComponent<Props> = ({
     [route]
   );
   return (
-    <BoxStyled>
+    <BoxStyled
+    sx={{
+      padding : isSmallCard ? '15px' : padding,
+    }}
+    >
       <Link
         href={`/id/${route}/${data.id ? data.id : "0"}/${
           data.name ? _.kebabCase(data.name) : "test-post"
@@ -205,14 +219,18 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     },
                   }}
                 >
-                  <Typography1Styled
+                  <Typography
+                    sx={{
+                      fontWeight: 800,
+                      textTransform: "uppercase",
+                    }}
                     fontSize={fontSizeTitle + accessibility.fontSize}
                     marginBottom={marginTop}
                     className="title"
                     onMouseEnter={() => textToSpeech(data.title, false)}
                   >
                     {truncateText(data.title, truncateTitle)}
-                  </Typography1Styled>
+                  </Typography>
                   {description && withDescription && (
                     <Typography
                       className="description"
@@ -223,7 +241,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
                       {description}
                     </Typography>
                   )}
-                  <Typography2
+                  <Typography
                     fontSize={fontSizeDate + accessibility.fontSize}
                     marginTop={marginTop}
                     className="date"
@@ -232,7 +250,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
                     {`${whatDayId(
                       new Date(data.created_at)
                     )} | ${timeAgo.format(new Date(data.created_at))}`}
-                  </Typography2>
+                  </Typography>
                 </Box>
               </Box>
             </Grid>
@@ -255,6 +273,8 @@ NewsItem.defaultProps = {
   withIconSurabaya: false,
   withPlay: false,
   sizePlay: 50,
+  isSmallCard: false,
+  padding: 0,
 };
 
 export default memo(NewsItem);

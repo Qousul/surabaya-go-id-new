@@ -15,8 +15,14 @@ import NewsList, { fontSizeBigger, fontSizeTitle } from 'components/news.list';
 import Pagination from 'components/pagination';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { NewsType } from 'components/home.section3';
+import { hijauRamadhan } from 'styles/theme';
 
 interface Props {};
+
+const TitleStyled = styled(Title)(({theme}) =>({
+  backgroundColor:hijauRamadhan,
+  borderRadius:'25px',
+}));
 
 const BoxStyled = styled(Box)(({ theme }) => ({
   '& .main-slider': {
@@ -54,7 +60,8 @@ const BoxStyled = styled(Box)(({ theme }) => ({
                     },
                     '& .inner': {
                       padding: theme.spacing(4, 8),
-                      color: theme.palette.common.white,
+                      color: theme.palette.mode == 'dark' ? 'white' : hijauRamadhan,
+                      // color: theme.palette.common.white,
                       '& .title': {
                         fontSize: fontSizeBigger,
                       },
@@ -69,7 +76,7 @@ const BoxStyled = styled(Box)(({ theme }) => ({
     },
     '& .thumb': {
       position: 'relative',
-      backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : theme.palette.background.paper,
+      backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : '#fff',
       borderRadius: theme.spacing(2.5),
       padding: theme.spacing(7, 5),
       '& .slick-slider': {
@@ -77,15 +84,7 @@ const BoxStyled = styled(Box)(({ theme }) => ({
         margin: '0 auto',
       },
       '& .wrapper-svg-section3': {
-        position: 'absolute',
-        top: theme.spacing(3),
-        right: `calc(100% + ${theme.spacing(4)})`,
-        '& svg': {
-          width: 50,
-          '& circle': {
-            fill: theme.palette.secondary.main,
-          },
-        },
+        display:'none',
       },
     },
   },
@@ -181,9 +180,9 @@ const News: NextPage<Props> = () => {
           },
         }}
       >
-        <Layout paddingY={2}>
+        <Layout paddingY={14}>
           <>
-            <Title text="Berita" />
+            <Title text="Berita"/>
             {loading ? (
               <>
                 {[...new Array(6)].map((_v, i) => (
@@ -212,6 +211,7 @@ const News: NextPage<Props> = () => {
                       truncateDescription={260}
                       withThumbnail={downSm ? false : true}
                       route="berita"
+                      isSmall={true}
                     />
                   }
                 </Box>

@@ -8,6 +8,7 @@ import { BreakpointsContext } from "contexts/breakpoints";
 import CarouselContentLP2 from "./carousel.contentLP2";
 import { hijauRamadhan } from "styles/theme";
 import { useRouter } from "next/router";
+import { Padding } from "@mui/icons-material";
 
 interface Props {
   data: NewsType[];

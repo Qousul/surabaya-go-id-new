@@ -107,7 +107,6 @@ const HomeSection6 = () => {
           gridContent={12}
           truncateTitle={40}
           withDescription={false}
-          
           slidesToShow={downSm ? 1 : 3}
           route="videos"
         />

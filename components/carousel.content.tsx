@@ -3,13 +3,13 @@ import {
   Box,
 } from '@mui/material';
 import Slider from 'react-slick';
-import { fontSize } from 'styles/theme';
+import { fontSize, hijauRamadhan } from 'styles/theme';
 import { StyledBox } from 'styles/carousel';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { NewsType } from 'components/home.section3';
 import NewsItem from 'components/news.item';
 import { Arrow } from 'components/carousel.small';
-import Element3 from 'public/images/icon/element_3.svg';
+// import Element3 from 'public/images/icon/element_3.svg';
 
 interface Props {
   data: NewsType[];
@@ -23,6 +23,8 @@ interface Props {
   truncateDescription?: number;
   withThumbnail?: boolean;
   route: string;
+  isSmall?: boolean;
+  padding?:number;
 };
 
 const defGridSpacing = 1;
@@ -42,6 +44,8 @@ const CarouselContent: React.FunctionComponent<Props> = ({
   gridContent,
   withThumbnail,
   route,
+  isSmall,
+  padding,
 }: Props) => {
   const slider = React.useRef<Slider>(null);
   const sliderThumb = React.useRef<Slider>(null);
@@ -82,11 +86,7 @@ const CarouselContent: React.FunctionComponent<Props> = ({
   return (
     <>
       <StyledBox className="content main">
-        <Arrow
-          size={(fontSize + (downLg ? 18 : 25)).toString()}
-          className="slick-arrow prev"
-          onClick={() => handleNextPrev(false)}
-        />
+       
         <Slider ref={slider} {...settings}>
           {data.map((v, i) => (
             <NewsItem
@@ -101,20 +101,18 @@ const CarouselContent: React.FunctionComponent<Props> = ({
               gridContent={gridContent}
               truncateDescription={truncateDescription}
               route={route}
+              padding={padding}
             />
           ))}
         </Slider>
-        <Arrow
-          size={(fontSize + (downLg ? 18 : 25)).toString()}
-          className="slick-arrow next"
-          onClick={() => handleNextPrev(true)}
-        />
       </StyledBox>
       {withThumbnail &&
         <StyledBox className="content thumb">
-          <Box className="wrapper-svg-section3">
-            <Element3 />
-          </Box>
+           <Arrow
+          size={(fontSize + (downLg ? 18 : 25)).toString()}
+          className="slick-arrow prev"
+          onClick={() => handleNextPrev(false)}
+        />
           <Slider ref={sliderThumb} {...settingsThumb}>
             {data.map((v, i) => (
               <NewsItem
@@ -126,9 +124,16 @@ const CarouselContent: React.FunctionComponent<Props> = ({
                 fontSizeDate={defFontSizeDate}
                 withDescription={false}
                 route={route}
+                isSmallCard={isSmall}
               />
+            
             ))}
           </Slider>
+          <Arrow
+          size={(fontSize + (downLg ? 18 : 25)).toString()}
+          className="slick-arrow next"
+          onClick={() => handleNextPrev(true)}
+        />
         </StyledBox>
       }
     </>
@@ -145,6 +150,8 @@ CarouselContent.defaultProps = {
   gridContent: 12,
   truncateDescription: 90,
   withThumbnail: false,
+  isSmall: false,
+  padding:0,
 };
 
 export default memo(CarouselContent);

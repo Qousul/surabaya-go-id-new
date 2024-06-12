@@ -112,6 +112,7 @@ const CarouselContentLP2: React.FunctionComponent<Props> = ({
                 fontSizeDate={defFontSizeDate}
                 withDescription={false}
                 route={route}
+                padding={1.5}
               />
           ))}
         </Slider>

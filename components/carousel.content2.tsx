@@ -178,6 +178,7 @@ const CarouselContent2: React.FunctionComponent<Props> = ({
 
 CarouselContent2.defaultProps = {
   slidesToShow: 1,
+  
   route: 'agenda',
 };
 

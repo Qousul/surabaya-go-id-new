@@ -69,6 +69,8 @@ const BoxStyled = styled(Box)(({ theme }) => ({
 
 const BoxStyledCarousel = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.divider,
+  backgroundImage : `url(images/batik.png)`,
+  backgroundSize : `cover`,
   overflow: 'hidden',
   '& .slick-arrow': {
     top: '35% !important',
@@ -153,14 +155,14 @@ const Detail: React.FunctionComponent<Props> = ({
   return (
     <>
       <BoxStyled>
-        <Layout paddingY={2}>
+        <Layout paddingY={15}>
           <>
-            <Box className="wrapper-svg-section1">
+            {/* <Box className="wrapper-svg-section1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-section4">
               <Element4 />
-            </Box>
+            </Box> */}
             {loadingDetail ? (
               <>
                 <Skeleton variant="text" />
@@ -214,18 +216,18 @@ const Detail: React.FunctionComponent<Props> = ({
       </BoxStyled>
       <BoxStyledCarousel marginTop={5}>
         <Layout>
-          <Box paddingBottom={8}>
-            <Box className="wrapper-svg-others1">
+          <Box paddingX={1} paddingBottom={8}>
+            {/* <Box className="wrapper-svg-others1">
               <Element1 />
             </Box>
             <Box className="wrapper-svg-others4">
               <Element4 />
-            </Box>
+            </Box> */}
             <Title text={`${pageTitle} Lainnya`} buttonText={downSm ? 'lainnya' : 'lihat semua'} onClick={handleOnClick} />
             <Box position="relative">
-              <Box className="wrapper-svg-others3">
+              {/* <Box className="wrapper-svg-others3">
                 <Element3 />
-              </Box>
+              </Box> */}
               {loading ? (
               <>
                 <Skeleton
@@ -247,6 +249,7 @@ const Detail: React.FunctionComponent<Props> = ({
                       fontSizeProps={fontSizeTitle - 6}
                       route={route}
                       truncateTitle={45}
+                      padding={2}
                     />
                   }
                 </>

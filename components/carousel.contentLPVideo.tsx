@@ -107,8 +107,9 @@ const CarouselContentLPVideo: React.FunctionComponent<Props> = ({
               withIconSurabaya={true}
               withPlay={true}
               sizePlay={downMd ? 100 : 50}
-              
+              padding={1.5}
               route={route}
+              //padding={2}
             />
           ))}
         </Slider>
@@ -134,6 +135,7 @@ const CarouselContentLPVideo: React.FunctionComponent<Props> = ({
                 fontSizeDate={defFontSizeDate}
                 withDescription={false}
                 route={route}
+                //padding={2}
               />
             ))}
           </Slider>

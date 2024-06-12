@@ -9,6 +9,7 @@ import NewsItem from 'components/news.item';
 import Element1 from 'public/images/icon/element_1.svg';
 import Element3 from 'public/images/icon/element_3.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
+import { hijauRamadhan } from 'styles/theme';
 
 interface Props {
   data: NewsType[];
@@ -29,9 +30,12 @@ const BoxStyled = styled(Box)(({ theme }) => ({
       transition: `all 0.2s ease-in-out`,
       '&:hover': {
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.common.white,
+        '& .inner .MuiBox-root':{
+          color: 'white',
+        }
       },
       '& .inner .MuiBox-root': {
+        color: theme.palette.mode == 'dark' ? 'white' : hijauRamadhan,
         display: 'flex',
         flexDirection: 'column',
         '& p': {
@@ -89,12 +93,12 @@ const NewsList: React.FunctionComponent<Props> = ({
   const { downSm } = React.useContext(BreakpointsContext);
   return (
     <BoxStyled>
-      <Box className="wrapper-svg-section1">
+      {/* <Box className="wrapper-svg-section1">
         <Element1 />
       </Box>
       <Box className="wrapper-svg-section3">
         <Element3 />
-      </Box>
+      </Box> */}
       <Box className="news-item-container">
         {data.map((v, i) => (
           <Box marginTop={downSm ? 2 : 5} key={i} className="news-item">
@@ -109,6 +113,7 @@ const NewsList: React.FunctionComponent<Props> = ({
               truncateDescription={350}
               withDescription={true}
               route={route}
+              isSmallCard={true}
             />
           </Box>
         ))}
