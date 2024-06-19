@@ -90,19 +90,6 @@ const CarouselContentLP2: React.FunctionComponent<Props> = ({
         />
         <Slider ref={slider} {...settings}>
           {data.map((v, i) => (
-            // <CardAgenda
-            //   key={i}
-            //   data={v}
-            //   gridSpacing={gridSpacing}
-            //   truncateTitle={truncateTitle}
-            //   fontSizeTitle={fontSizeProps}
-            //   fontSizeDate={defFontSizeDate}
-            //   withDescription={withDescription}
-            //   gridImage={gridImage}
-            //   gridContent={gridContent}
-            //   truncateDescription={truncateDescription}
-            //   route={route}
-            // />
             <NewsItem
                 key={i}
                 data={v}

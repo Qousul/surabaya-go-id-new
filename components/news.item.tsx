@@ -74,6 +74,9 @@ const BoxStyled = styled(Box)(({ theme }) => ({
       },
     },
     "& .icon-surabaya": iconSurabaya(sizeIcon),
+    "& .inner":{
+      color: theme.palette.mode == 'dark' ? 'white' : hijauRamadhan,
+    }
   },
 }));
 

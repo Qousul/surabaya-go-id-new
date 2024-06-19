@@ -108,10 +108,7 @@ const Agenda: NextPage<Props> = () => {
         <title>Pemerintah Kota Surabaya</title>
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
-      <Box overflow="hidden" sx={{
-        backgroundImage: ` linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
-        url('/images/batik.png')`,
-      }}>
+      <Box overflow="hidden">
         <Layout paddingY={14}>
           <BoxStyled
             sx={current != 1 && {
