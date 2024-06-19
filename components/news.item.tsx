@@ -41,6 +41,7 @@ interface Props {
   padding?: number;
   textWhite?: boolean;
   isLandingPage?: boolean;
+  isAgenda?: boolean;
 }
 
 export const fontSizeDateInit = fontSizeDef - 2;
@@ -97,6 +98,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
   isSmallCard, 
   padding,
   isLandingPage,
+  isAgenda,
   textWhite,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
@@ -146,6 +148,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
                       ? "https://webdisplay.surabaya.go.id"
                       : "https://surabaya.go.id"
                   }${data.feature_image}`}
+                  style={{height : isAgenda && `20rem`}}
                 />
                 {withPlay && (
                   <Box
@@ -269,6 +272,7 @@ NewsItem.defaultProps = {
   isSmallCard: false,
   padding: 0,
   isLandingPage: false,
+  isAgenda: false,
 };
 
 export default memo(NewsItem);

@@ -165,6 +165,7 @@ const CarouselContent2: React.FunctionComponent<Props> = ({
               withDescription={false}
               route={route}
               textWhite={textWhite}
+              isAgenda={true}
             />
           ))}
         </Slider>
