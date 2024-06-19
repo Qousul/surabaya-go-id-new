@@ -11,6 +11,7 @@ import PodcastItem from 'components/media.podcast.item';
 // import Element4 from 'public/images/icon/element_4.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 
+
 interface Props {
   data: NewsType[];
 };
@@ -53,6 +54,7 @@ const MediaPodcastList: React.FunctionComponent<Props> = ({
   data,
 }: Props) => {
   const { downSm } = React.useContext(BreakpointsContext);
+  
   return (
     <BoxStyled>
       {/* <Box className="wrapper-svg-section4">

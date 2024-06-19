@@ -11,8 +11,10 @@ import { NewsType } from 'components/home.section3';
 // import { fontSizeTitle } from 'components/news.list';
 import { boxShadow, fontSize } from 'styles/theme';
 import PlayIcon from 'public/images/icon/play_podcast.svg';
+import PlayIcon2 from 'public/images/icon/play_podcast_white.svg';
 import { truncateText } from 'utils/truncate';
 import { AccessibilityContext } from 'contexts/accessibility';
+import { ColorModeContext } from 'contexts/colorMode';
 import useTextToSpeech from 'hooks/useTextToSpeech';
 
 interface Props {
@@ -47,6 +49,7 @@ const PodcastItem: React.FunctionComponent<Props> = ({
   isVertical,
 }: Props) => {
   const accessibility = React.useContext(AccessibilityContext);
+  const { mode } = React.useContext(ColorModeContext);
   const { textToSpeech } = useTextToSpeech();
   return (
     <BoxStyled
@@ -98,7 +101,13 @@ const PodcastItem: React.FunctionComponent<Props> = ({
                 },
               }}
             >
-              <PlayIcon />
+              {
+                mode === 'light'?
+                <PlayIcon />
+                :
+                <PlayIcon2 />
+
+              }
             </Box>
           </a>
         </Link>
