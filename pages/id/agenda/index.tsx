@@ -108,8 +108,11 @@ const Agenda: NextPage<Props> = () => {
         <title>Pemerintah Kota Surabaya</title>
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
-      <Box overflow="hidden">
-        <Layout paddingY={2}>
+      <Box overflow="hidden" sx={{
+        backgroundImage: ` linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+        url('/images/batik.png')`,
+      }}>
+        <Layout paddingY={14}>
           <BoxStyled
             sx={current != 1 && {
               '& .news-item-container': {
@@ -119,10 +122,7 @@ const Agenda: NextPage<Props> = () => {
               },
             }}
           >
-            <Box className="wrapper-svg-element4">
-              <Element4 />
-            </Box>
-            <Title text="Agenda Kota" />
+            <Title text="Agenda Kota" roundedBg={true}/>
             {loading ? (
               <>
                 {[...new Array(6)].map((_v, i) => (
@@ -142,13 +142,13 @@ const Agenda: NextPage<Props> = () => {
               <>
                 {agenda && current == 1 &&
                   <Grid container spacing={4} alignItems="stretch">
-                    <Grid item xs={12} sm={7}>
+                    <Grid item xl={12} xs={12} sm={7}>
                       <CarouselContent2
-                        data={agenda.slice(0, 4)}
+                        data={agenda.slice(0, 4)} 
                         slidesToShow={1}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={5}>
+                    {/* <Grid item xs={12} sm={5}>
                       <Box 
                         height="100%"
                         display="flex"
@@ -194,7 +194,7 @@ const Agenda: NextPage<Props> = () => {
                           </Box>
                         ))}
                       </Box>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 }
                 <NewsList data={current == 1 ? agenda.slice(4, agenda.length) : agenda} route="agenda" />

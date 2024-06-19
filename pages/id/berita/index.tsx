@@ -16,6 +16,7 @@ import Pagination from 'components/pagination';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { NewsType } from 'components/home.section3';
 import { hijauRamadhan } from 'styles/theme';
+import { Padding } from '@mui/icons-material';
 
 interface Props {};
 
@@ -25,6 +26,12 @@ const TitleStyled = styled(Title)(({theme}) =>({
 }));
 
 const BoxStyled = styled(Box)(({ theme }) => ({
+  backgroundImage: theme.palette.mode == "dark" ?
+   `url('/images/batik.png')` :  
+   `linear-gradient(
+    rgba(255, 255, 255, 0.75), 
+    rgba(255, 255, 255, 0.75)
+  ), url('/images/batik.png')`,
   '& .main-slider': {
     '& .main': {
       backgroundColor: theme.palette.primary.main,
@@ -76,9 +83,9 @@ const BoxStyled = styled(Box)(({ theme }) => ({
     },
     '& .thumb': {
       position: 'relative',
-      backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : '#fff',
+      // backgroundColor: theme.palette.mode == 'dark' ? theme.palette.grey.A100 : '#fff',
       borderRadius: theme.spacing(2.5),
-      padding: theme.spacing(7, 5),
+      padding: theme.spacing(5, 5),
       '& .slick-slider': {
         maxWidth: 920,
         margin: '0 auto',
@@ -182,7 +189,7 @@ const News: NextPage<Props> = () => {
       >
         <Layout paddingY={14}>
           <>
-            <Title text="Berita"/>
+            <Title text="Berita"  roundedBg={true}/>
             {loading ? (
               <>
                 {[...new Array(6)].map((_v, i) => (

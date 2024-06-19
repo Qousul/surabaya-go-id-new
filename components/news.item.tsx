@@ -77,25 +77,6 @@ const BoxStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
-// const Typography1Styled = styled(Typography)(({ theme }) => ({
-//   fontWeight: 800,
-//   textTransform: "uppercase",
-//   color:
-//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
-// }));
-
-// const Typography2 = styled(Typography)(({ theme }) => ({
-//   fontWeight: 500,
-//   textTransform: "uppercase",
-//   color:
-//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
-// }));
-
-// const TypographyDesc = styled(Typography)(({theme})=>({
-//   color:
-//     theme.palette.mode === "dark" ? theme.palette.common.white : hijauRamadhan,
-// }));
-
 const NewsItem: React.FunctionComponent<Props> = ({
   data,
   gridImage,
@@ -134,6 +115,7 @@ const NewsItem: React.FunctionComponent<Props> = ({
     <BoxStyled
     sx={{
       padding : isSmallCard ? '15px' : isLandingPage? '15px' : padding,
+      border: `1.5px solid ${coklatKece}`
     }}
     >
       <Link
@@ -141,7 +123,8 @@ const NewsItem: React.FunctionComponent<Props> = ({
           data.name ? _.kebabCase(data.name) : "test-post"
         }`}
       >
-        <a style={{border : withIconSurabaya && !isLandingPage && `1px solid ${hijauRamadhan}`}}>
+        {/* <a style={{border : withIconSurabaya && !isLandingPage && `1px solid ${hijauRamadhan}`}}> */}
+        <a>
           <Grid container spacing={gridSpacing}>
             <Grid item sm={gridImage}>
               <Box

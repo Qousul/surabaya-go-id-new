@@ -36,7 +36,7 @@ const MediaDate: React.FunctionComponent<Props> = ({
           fontSize:`1${accessibility.fontSize}0%`,
         }}
       >
-        {withText && `Di unggah : `} {dateFormat} {` | `} {others}
+        {withText && `Diunggah : `} {dateFormat} {` | `} {others}
       </Typography>
       <PopperShare title={title} />
     </Box>

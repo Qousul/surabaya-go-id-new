@@ -8,6 +8,7 @@ import { StyledBox } from 'styles/carousel';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { NewsType } from 'components/home.section3';
 import NewsItem from 'components/news.item';
+import NewsItem2 from './news.itemLP';
 import { Arrow } from 'components/carousel.small';
 // import Element3 from 'public/images/icon/element_3.svg';
 
@@ -28,7 +29,7 @@ interface Props {
 };
 
 const defGridSpacing = 1;
-const defTruncateTitle = 35;
+const defTruncateTitle = 30;
 const defFontSizeProps = (fontSize - 1);
 export const defFontSizeDate = (fontSize - 4);
 
@@ -51,6 +52,7 @@ const CarouselContent: React.FunctionComponent<Props> = ({
   const sliderThumb = React.useRef<Slider>(null);
   const { downLg } = React.useContext(BreakpointsContext);
   const settings = {
+    adaptiveHeight:true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -85,11 +87,11 @@ const CarouselContent: React.FunctionComponent<Props> = ({
   }, []);
   return (
     <>
-      <StyledBox className="content main">
+      <StyledBox className="">
        
         <Slider ref={slider} {...settings}>
           {data.map((v, i) => (
-            <NewsItem
+            <NewsItem2
               key={i}
               data={v}
               gridSpacing={gridSpacing}
@@ -101,7 +103,7 @@ const CarouselContent: React.FunctionComponent<Props> = ({
               gridContent={gridContent}
               truncateDescription={truncateDescription}
               route={route}
-              padding={padding}
+              height={40}
             />
           ))}
         </Slider>
@@ -121,7 +123,7 @@ const CarouselContent: React.FunctionComponent<Props> = ({
                 gridSpacing={defGridSpacing}
                 truncateTitle={defTruncateTitle}
                 fontSizeTitle={defFontSizeProps}
-                fontSizeDate={defFontSizeDate}
+                fontSizeDate={defFontSizeDate-2}
                 withDescription={false}
                 route={route}
                 isSmallCard={isSmall}

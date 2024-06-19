@@ -259,9 +259,9 @@ const HeaderDialog: React.FunctionComponent<Props> = ({ menu, open, onClose }: P
           </Grid>
         </StyledBox>
       </StyledDialogContent>
-      <StyledBoxSvg className="wrapper-svg2">
+      {/* <StyledBoxSvg className="wrapper-svg2">
         <Element4 />
-      </StyledBoxSvg>
+      </StyledBoxSvg> */}
     </Dialog>
   );
 };

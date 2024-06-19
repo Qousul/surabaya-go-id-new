@@ -30,6 +30,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
       color: theme.palette.mode == 'dark' ? theme.palette.grey[100] : theme.palette.grey[900],
     },
   },
+  '& .slick-arrow': {
+    // position: 'absolute',
+    top: '0%',
+  }
 }));
 
 const Pagination: React.FunctionComponent<Props> = ({ total, current, loading, clickNextPrev }: Props) => {
@@ -65,7 +69,7 @@ const Pagination: React.FunctionComponent<Props> = ({ total, current, loading, c
           className={`prev slick-arrow ${current == 1 ? 'disabled' : ''}`}
           onClick={() => handleClick(false, current == 1)}
         />
-        <Box marginX={4} display="flex" alignItems="center">
+        <Box marginX={6} display="flex" alignItems="center">
           {pages.map((v, i) => (
             <Typography
               key={i}

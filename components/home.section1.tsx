@@ -235,15 +235,16 @@ const HomeSection1: React.FunctionComponent<Props> = ({ data }: Props) => {
             <Typography
               textAlign="center"
               fontStyle="italic"
+              // fontFamily="serif"
+              // fontWeight={0.1}
               fontSize={downSm ? 24 - 1 : 24}
-              // fontWeight={500}
               lineHeight={1.5}
               color={`#ffffff`}
-              textTransform="uppercase"
+              // textTransform="uppercase"
             >
-              {`Gotong royong menuju kota dunia yang maju,`}
+              {`Gotong Royong Menuju Kota Dunia yang Maju,`}
               <br />
-              {`humanis, dan berkelanjutan`}
+              {`Humanis, dan Berkelanjutan`}
             </Typography>
             <Box display="flex" justifyContent="center" marginTop={3}>
               <Search />

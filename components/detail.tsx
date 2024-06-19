@@ -16,7 +16,7 @@ import { NewsType } from 'components/home.section3';
 import { fontSizeTitle } from 'components/news.list';
 import { fontSizeDateInit } from 'components/news.item';
 import PopperShare from 'components/popper.share';
-import CarouselContent from 'components/carousel.content';
+import CarouselContent from 'components/carousel.contentLP2';
 import Element1 from 'public/images/icon/element_1.svg';
 import Element3 from 'public/images/icon/element_3.svg';
 import Element4 from 'public/images/icon/element_4.svg';
@@ -217,17 +217,8 @@ const Detail: React.FunctionComponent<Props> = ({
       <BoxStyledCarousel marginTop={5}>
         <Layout>
           <Box paddingX={1} paddingBottom={8}>
-            {/* <Box className="wrapper-svg-others1">
-              <Element1 />
-            </Box>
-            <Box className="wrapper-svg-others4">
-              <Element4 />
-            </Box> */}
             <Title text={`${pageTitle} Lainnya`} buttonText={downSm ? 'lainnya' : 'lihat semua'} onClick={handleOnClick} />
             <Box position="relative">
-              {/* <Box className="wrapper-svg-others3">
-                <Element3 />
-              </Box> */}
               {loading ? (
               <>
                 <Skeleton
@@ -249,7 +240,6 @@ const Detail: React.FunctionComponent<Props> = ({
                       fontSizeProps={fontSizeTitle - 6}
                       route={route}
                       truncateTitle={45}
-                      padding={2}
                     />
                   }
                 </>

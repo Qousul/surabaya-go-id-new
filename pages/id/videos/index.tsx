@@ -33,6 +33,14 @@ interface Props {};
 export const sizePlay = 100;
 
 export const BoxStyled = styled(Box)(({ theme }) => ({
+  backgroundImage: theme.palette.mode == "dark" ?
+   `url('/images/batik.png')` :  
+   `linear-gradient(
+    rgba(255, 255, 255, 0.75), 
+    rgba(255, 255, 255, 0.75)
+  ), url('/images/batik.png')`,
+  backgroundSize: 'contain',
+  backgroundBlendMode:'screen',
   position: 'relative',
   '& .grid-content': {
     '& a': {

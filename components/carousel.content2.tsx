@@ -12,6 +12,7 @@ import { NewsType } from 'components/home.section3';
 import NewsItem from 'components/news.item';
 import { Arrow } from 'components/carousel.small';
 import { fontSizeBigger } from 'components/news.list';
+import { Height } from '@mui/icons-material';
 
 interface Props {
   data: NewsType[];

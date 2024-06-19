@@ -18,6 +18,7 @@ import { fontSizeTitle } from 'components/news.list';
 import MediaDate from 'components/media.date';
 import { NewsType } from 'components/home.section3';
 import MediaPodcastOthers from 'components/media.podcast.others';
+import MediaPodcastList from 'components/media.podcast.list';
 import Element1 from 'public/images/icon/element_1.svg';
 import { BreakpointsContext } from 'contexts/breakpoints';
 import { getDetail } from 'utils/services/webdisplay';
@@ -98,7 +99,7 @@ const PodcastDetail: NextPage<Props> = ({ detail }: Props) => {
     console.log('results', results);
     if (fetchData.status == StatusCodes.OK) {
       if (results && results.data && results.data.data && results.data.data.length > 0) {
-        setOthers(results.data.data);
+        setOthers(results.data.data.slice(0, 3));
       } else {
         setOthers(null);
       };
@@ -115,11 +116,8 @@ const PodcastDetail: NextPage<Props> = ({ detail }: Props) => {
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
       <BoxStyled>
-        <Layout paddingY={2}>
+        <Layout paddingY={14}>
           <>
-            <Box className="wrapper-svg-section1">
-              <Element1 />
-            </Box>
             <Title text="Podcast" paddingY={3} onBack={() => router.push(`/id/podcasts`)} />
             <Box paddingY={6} className="main-content" position="relative" zIndex={1}>
               <img src={`https://webdisplay.surabaya.go.id${detail.feature_image}`} />
@@ -141,9 +139,16 @@ const PodcastDetail: NextPage<Props> = ({ detail }: Props) => {
           </>
         </Layout>
       </BoxStyled>
+      <Layout>
+      <Title
+            text="Rekomendasi Untuk Didengarkan"
+            buttonText={downSm ? '' : 'lihat semua'}
+            onClick={() => router.push(`/id/podcasts`)}
+          />
       {!loading && others && others.length > 0 &&
-        <MediaPodcastOthers data={others} />
+        <MediaPodcastList data={others} />
       }
+      </Layout>
     </React.Fragment>
   );
 };

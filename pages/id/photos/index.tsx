@@ -149,23 +149,9 @@ const Photos: NextPage<Props> = () => {
       </Head>
       <BoxStyled overflow="hidden" style={{
         paddingTop:`7rem`,
-        backgroundImage: `url('/images/batik.png')`,
-        backgroundSize: 'contain',
-        backgroundBlendMode: 'screen',
-        
-        
       }}>
         <Layout paddingY={2}>
           <BoxStyledElement className={accessibility.css.negative ? 'negative' : ''}>
-            {/* <Box className="wrapper-svg-section4">
-              <Element4 />
-            </Box>
-            <Box className="wrapper-svg-section3">
-              <Element3 />
-            </Box>
-            <Box className="wrapper-svg-section1">
-              <Element1 />
-            </Box> */}
             <Title text="Foto" roundedBg={true}/>
             {!loading && current == 1 &&
               <BoxCarouselStyled>
@@ -204,7 +190,9 @@ const Photos: NextPage<Props> = () => {
                       className={`grid-content`}
                       sx={{
                         '& .MuiGrid-container': {
+                          // border:'none !important',
                           '& .MuiGrid-item': {
+                            border:'none !important',
                             '& .inner': {
                               '& .title': {
                                 fontSize: (fontSizeTitle - 5) + accessibility.fontSize,

@@ -110,6 +110,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   '& .slick-arrow': {
     position: 'absolute',
     top: '50%',
+    // top:'0%',
     zIndex: 9,
     display: 'flex',
     justifyContent: 'center',

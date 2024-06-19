@@ -128,23 +128,11 @@ const MediaPodcastOthers: React.FunctionComponent<Props> = ({
     <Box overflow="hidden" paddingBottom={16}>
       <Layout paddingY={0}>
         <BoxStyled className={accessibility.css.negative ? 'negative' : ''}>
-          <Box className="wrapper-svg-element4">
-            <Element4 />
-          </Box>
           <Title
             text="Rekomendasi Untuk Didengarkan"
             buttonText={downSm ? '' : 'lihat semua'}
             onClick={() => router.push(`/id/podcasts`)}
           />
-          <Box className="content-svg">
-            <Box className="wrapper-svg"
-              sx={{
-                width: `${heightSvg}px`,
-              }}
-            >
-              <Element3 />
-            </Box>
-          </Box>
           {data.map((v, i) => (
             <ListPodcast data={v} key={i} />
           ))}
