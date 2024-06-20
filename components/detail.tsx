@@ -37,6 +37,13 @@ interface Props {
 };
 
 const BoxStyled = styled(Box)(({ theme }) => ({
+  backgroundImage: theme.palette.mode == "dark" ?
+  `url('/images/batik.png')` :  
+  `linear-gradient(
+   rgba(255, 255, 255, 0.75), 
+   rgba(255, 255, 255, 0.75)
+ ), url('/images/batik.png')`,
+ backgroundSize:'contain',
   margin: theme.spacing(0),
   overflow: 'hidden',
   '& .wrapper-svg-section1': {

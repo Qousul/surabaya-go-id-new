@@ -32,6 +32,7 @@ const BoxStyled = styled(Box)(({ theme }) => ({
     rgba(255, 255, 255, 0.75), 
     rgba(255, 255, 255, 0.75)
   ), url('/images/batik.png')`,
+  backgroundSize:'contain',
   '& .main-slider': {
     '& .main': {
       backgroundColor: theme.palette.primary.main,

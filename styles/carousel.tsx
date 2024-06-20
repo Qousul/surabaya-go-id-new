@@ -94,6 +94,17 @@ export const StyledBox = styled(Box)(({ theme }) => ({
     },
   },
   '&.content': {
+    '& .slick-arrow': {
+      top: '50%',
+      '&.next': {
+        right: -50,
+        transform: 'translate(0, -50%)',
+      },
+      '&.prev': {
+        left: -50,
+        transform: 'translate(0, -50%) rotate(180deg)',
+      },
+    },
     '& .slick-slider': {
       '& .slick-list': {
         overflow: 'hidden',

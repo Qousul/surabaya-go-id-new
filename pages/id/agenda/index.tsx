@@ -21,6 +21,7 @@ import Title from 'components/title';
 import NewsList from 'components/news.list';
 import Pagination from 'components/pagination';
 import { NewsType } from 'components/home.section3';
+import { ColorModeContext } from 'contexts/colorMode';
 import { fontSize, borderRadius } from 'styles/theme';
 import { fontSizeDateInit } from 'components/news.item';
 import { truncateText } from 'utils/truncate';
@@ -73,6 +74,7 @@ const Agenda: NextPage<Props> = () => {
   const [ agenda, setAgenda ] = React.useState<NewsType[]>([]);
   const [ loading, setLoading ] = React.useState(true);
   const [ count, setCount ] = React.useState(null);
+  const {mode} = React.useContext(ColorModeContext);
   const current = React.useMemo(() => (router.query.page ? parseInt(router.query.page as string) : 1), [router.query.page]);
   const getData = async (pageParams: number) => {
     setLoading(true);
@@ -108,7 +110,15 @@ const Agenda: NextPage<Props> = () => {
         <title>Pemerintah Kota Surabaya</title>
         <meta name="description" content="Pemerintah Kota Surabaya" />
       </Head>
-      <Box overflow="hidden">
+      <Box overflow="hidden" sx={{
+          backgroundImage: mode == "dark" ?
+          `url('/images/batik.png')` :  
+          `linear-gradient(
+           rgba(255, 255, 255, 0.75), 
+           rgba(255, 255, 255, 0.75)
+         ), url('/images/batik.png')`,
+         backgroundSize:'contain',
+      }}>
         <Layout paddingY={14}>
           <BoxStyled
             sx={current != 1 && {
@@ -145,53 +155,6 @@ const Agenda: NextPage<Props> = () => {
                         slidesToShow={1}
                       />
                     </Grid>
-                    {/* <Grid item xs={12} sm={5}>
-                      <Box 
-                        height="100%"
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="space-between"
-                      >
-                        {agenda.slice(0, 4).map((v, i) => (
-                          <Box
-                            key={i}
-                            marginTop={2}
-                            sx={{
-                              '& a': {
-                                color: 'text.primary',
-                                textDecoration: 'none',
-                                display: 'block',
-                                borderRadius,
-                                paddingY: 1.5,
-                                paddingX: 2,
-                                transition: `all 0.2s ease-in-out`,
-                                '&:hover': {
-                                  boxShadow,
-                                },                  
-                              },
-                              '&:first-of-type': {
-                                marginTop: 0,
-                              },
-                            }}
-                          >
-                            <Link href={`/id/agenda/${v.id}/${_.kebabCase(v.title)}`}>
-                              <a>
-                                <Typography
-                                  fontSize={fontSize}
-                                  textTransform="uppercase"
-                                  fontWeight={700}
-                                >
-                                  {truncateText(v.title, 60)}
-                                </Typography>
-                                <Typography fontSize={fontSizeDateInit}>
-                                  {`${whatDayId(new Date(v.created_at))} | ${timeAgo.format(new Date(v.created_at))}`}
-                                </Typography>
-                              </a>
-                            </Link>
-                          </Box>
-                        ))}
-                      </Box>
-                    </Grid> */}
                   </Grid>
                 }
                 <NewsList data={current == 1 ? agenda.slice(4, agenda.length) : agenda} route="agenda" />
