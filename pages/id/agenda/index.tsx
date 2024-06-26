@@ -6,14 +6,12 @@ import {
   Skeleton,
 } from '@mui/material';
 import type { NextPage } from 'next';
-import whatDayId from 'what-day-id';
 import TimeAgo from 'javascript-time-ago';
 import _ from 'lodash';
 import { useRouter } from 'next/router';
 import id from 'javascript-time-ago/locale/id';
 import { StatusCodes } from 'http-status-codes';
 import { styled } from '@mui/material/styles';
-import Link from 'next/link';
 import Head from 'next/head';
 import Layout from 'components/layout';
 import CarouselContent2 from 'components/carousel.content2';
@@ -22,11 +20,6 @@ import NewsList from 'components/news.list';
 import Pagination from 'components/pagination';
 import { NewsType } from 'components/home.section3';
 import { ColorModeContext } from 'contexts/colorMode';
-import { fontSize, borderRadius } from 'styles/theme';
-import { fontSizeDateInit } from 'components/news.item';
-import { truncateText } from 'utils/truncate';
-import { boxShadow } from 'styles/theme';
-import Element4 from 'public/images/icon/element_4.svg';
 
 TimeAgo.addLocale(id);
 const timeAgo = new TimeAgo('id-ID');
