@@ -33,6 +33,7 @@ const BoxStyled = styled(Box)(({ theme }) => ({
    rgba(255, 255, 255, 0.75), 
    rgba(255, 255, 255, 0.75)
  ), url('/images/batik.png')`,
+ backgroundSize:'contain',
   position: 'relative',
   '& .wrapper-svg-section1': {
     position: 'absolute',
