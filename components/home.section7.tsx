@@ -132,6 +132,7 @@ const HomeSection5 = () => {
   const { downSm } = React.useContext(BreakpointsContext);
   const { downMd } = React.useContext(BreakpointsContext);
   const accessibility = React.useContext(AccessibilityContext);
+  <div className="bg-hijauRamadhan text-secondary sm:bg-coklatKece md:bg-primary lg:text-primary xl:text-grey"></div>
 
   const [photos, setPhotos] = React.useState<NewsType[]>([]);
   const [loading, setLoading] = React.useState(false);
